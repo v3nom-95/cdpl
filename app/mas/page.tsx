@@ -38,10 +38,10 @@ export default function Mas() {
             </section>
 
             {/* Cinematic Mission Section */}
-            <section className="mas-hero-content" style={{ marginTop: '0', padding: '1rem 4rem' }}>
-                <div className="container">
+            <section className="mas-hero-content" style={{ marginTop: '0', padding: 'clamp(1rem, 5vh, 4rem) clamp(1.5rem, 5vw, 4rem)' }}>
+                <div className="container" style={{ padding: 0 }}>
                     <h2 style={{
-                        fontSize: 'max(28px, 3vw)',
+                        fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
                         color: 'var(--text-primary)',
                         marginBottom: '1.5rem',
                         lineHeight: '1.1',
@@ -55,8 +55,8 @@ export default function Mas() {
 
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                        gap: '2.5rem',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                        gap: 'clamp(1.5rem, 5vw, 2.5rem)',
                         maxWidth: '1200px',
                         textAlign: 'left',
                         marginBottom: '2rem'
@@ -75,27 +75,27 @@ export default function Mas() {
                 </div>
             </section>
 
-            <section id="partners" className="about-section" style={{ borderTop: '1px solid var(--border-color)', paddingBottom: '2rem' }}>
+            <section id="partners" className="about-section" style={{ borderTop: '1px solid var(--border-color)', padding: 'clamp(2rem, 5vh, 4rem) 0' }}>
                 <div className="container">
                     {/* Partner Section */}
-                    <div className="partners-section" style={{ marginTop: '1.5rem' }}>
-                        <h4 style={{ textAlign: 'center', marginBottom: '3rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-tertiary)', letterSpacing: '2px' }}>STRATEGIC PARTNERSHIPS</h4>
+                    <div className="partners-section" style={{ marginTop: '0' }}>
+                        <h4 style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vh, 3rem)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-tertiary)', letterSpacing: '2px' }}>STRATEGIC PARTNERSHIPS</h4>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="partner-logo-grid" style={{
                                 display: 'flex',
-                                gap: '5rem',
+                                gap: 'clamp(2rem, 5vw, 5rem)',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 flexWrap: 'wrap'
                             }}>
-                                <div className="partner-logo-item" style={{ width: '140px', display: 'flex', justifyContent: 'center' }}>
+                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center' }}>
                                     <img src="/partners/d1.png" alt="Indian Army" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                                 </div>
-                                <div className="partner-logo-item" style={{ width: '140px', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
-                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem' }}>PARTNER_02</div>
+                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
+                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem' }}>PARTNER_02</div>
                                 </div>
-                                <div className="partner-logo-item" style={{ width: '140px', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
-                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem' }}>PARTNER_03</div>
+                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
+                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem' }}>PARTNER_03</div>
                                 </div>
                             </div>
                         </div>
@@ -195,6 +195,7 @@ export default function Mas() {
                         </div>
                     </div>
 
+                    <p className="swipe-hint">← Swipe to explore →</p>
                     <div className="carousel-controls" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
                         <button
                             onClick={() => scrollCarousel('left')}
@@ -271,22 +272,47 @@ export default function Mas() {
                     scroll-behavior: smooth;
                     scrollbar-width: none;
                     scroll-snap-type: x mandatory;
+                    -webkit-overflow-scrolling: touch;
+                    padding-left: 2rem;
+                    padding-right: 2rem;
                 }
                 .product-carousel::-webkit-scrollbar {
                     display: none;
                 }
                 .product-carousel-item {
-                    min-width: 350px;
-                    flex: 0 0 auto;
-                    scroll-snap-align: center;
+                    flex: 0 0 380px;
+                    scroll-snap-align: start;
+                }
+                .swipe-hint {
+                    display: none;
                 }
                 @media (max-width: 768px) {
                     .product-carousel {
-                        gap: 1rem;
-                        scroll-padding: 1rem; /* Adjust snap padding */
+                        gap: 1.2rem;
+                        padding-left: 1.2rem;
+                        padding-right: 1.2rem;
+                        padding-bottom: 1.5rem;
                     }
                     .product-carousel-item {
-                        min-width: 85vw; /* Almost full width for mobile focus */
+                        flex: 0 0 88vw;
+                    }
+                    .swipe-hint {
+                        display: block;
+                        text-align: center;
+                        font-family: var(--font-mono);
+                        font-size: 0.65rem;
+                        color: var(--text-tertiary);
+                        letter-spacing: 2px;
+                        margin-bottom: 1rem;
+                        text-transform: uppercase;
+                    }
+                    .carousel-controls {
+                        display: none;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .product-carousel-item {
+                        flex: 0 0 92vw;
                     }
                 }
             `}</style>

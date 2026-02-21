@@ -6,46 +6,55 @@ const CategoryCard = ({ category }) => {
     return (
         <div
             className="product-card"
-            style={category.cardBg ? { backgroundColor: category.cardBg, borderColor: category.cardBg } : {}}
+            style={category.cardBg ? { backgroundColor: category.cardBg, borderColor: 'rgba(255,255,255,0.1)' } : {}}
         >
             <span className="corner corner-tl"></span>
             <span className="corner corner-tr"></span>
             <span className="corner corner-bl"></span>
             <span className="corner corner-br"></span>
 
-            <div className={`product-image ${category.imageClass}`} style={category.imageFull ? { backgroundColor: '#fff', padding: '2rem' } : {}}>
-                <div className="product-type-badge">DIVISION</div>
+            {/* Image slot — always white background for logos */}
+            <div
+                className="product-image"
+                style={{
+                    background: '#ffffff',
+                    borderBottom: '1px solid rgba(0,0,0,0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '2.5rem'
+                }}
+            >
+
                 {category.logo && (
                     <img
                         src={category.logo}
                         alt={category.title}
-                        style={category.imageFull ? {
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            maxHeight: '80%',
-                            maxWidth: '85%',
+                        style={{
+                            maxHeight: '130px',
+                            maxWidth: '80%',
                             objectFit: 'contain',
-                            zIndex: 2
-                        } : {
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            maxHeight: '60%',
-                            maxWidth: '70%',
-                            objectFit: 'contain',
-                            filter: 'brightness(1.1)',
-                            zIndex: 2
+                            display: 'block'
                         }}
                     />
                 )}
+                {!category.logo && (
+                    <div style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.7rem',
+                        color: 'rgba(0,0,0,0.2)',
+                        letterSpacing: '2px',
+                        textTransform: 'uppercase'
+                    }}>
+                        [ LOGO PENDING ]
+                    </div>
+                )}
             </div>
+
             <div className="product-content">
                 <span
                     className="product-tagline"
-                    style={category.textColor ? { color: 'rgba(255,255,255,0.7)' } : {}}
+                    style={category.textColor ? { color: 'rgba(255,255,255,0.6)' } : {}}
                 >
                     {category.tagline}
                 </span>
@@ -74,36 +83,30 @@ export default function ProductCategories() {
             title: "Major Aerospace Systems",
             tagline: "A BRAND OF CDPL",
             description: "Dedicated to the design and development of advanced UAV platforms, delivering autonomous supremacy for defense and institutional surveillance.",
-            imageClass: "product-image-aot",
-            logo: "/partners/mas-logo.png",
+            logo: "/partners/masicon.png",
             link: "/mas",
             cardBg: "#000052",
-            textColor: "#FFFFFF",
-            imageFull: true // Changed to contain within CategoryCard
+            textColor: "#FFFFFF"
         },
         {
             id: "mms",
             title: "Major Marine Systems",
             tagline: "A BRAND OF CDPL",
             description: "Pioneering underwater and surface autonomy, delivering secure and resilient maritime platforms for naval and industrial applications.",
-            imageClass: "product-image-hydra",
-            logo: "/partners/mms-logo.png",
+            logo: "/partners/mmsicon.png",
             link: "/mms",
             cardBg: "#000052",
-            textColor: "#FFFFFF",
-            imageFull: true
+            textColor: "#FFFFFF"
         },
         {
             id: "mgs",
             title: "Major Ground Systems",
             tagline: "A BRAND OF CDPL",
             description: "Developing advanced autonomous ground vehicles and tactical robotics designed for complex environments and resilient logistics.",
-            imageClass: "product-image-sim",
-            logo: "/partners/mgs-logo.png",
+            logo: "/partners/mgsicon.png",
             link: "/mgs",
             cardBg: "#000052",
-            textColor: "#FFFFFF",
-            imageFull: true
+            textColor: "#FFFFFF"
         }
     ];
 
@@ -122,3 +125,4 @@ export default function ProductCategories() {
         </section>
     );
 }
+

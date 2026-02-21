@@ -29,19 +29,19 @@ export default function AboutPage() {
         {
             name: "Major Aerospace Systems",
             id: "MAS",
-            logo: "/partners/mas-logo.png",
+            logo: "/partners/masicon.png",
             desc: "Advanced aerial autonomous platforms and ISR solutions."
         },
         {
             name: "Major Ground Systems",
             id: "MGS",
-            logo: "/partners/mgs-logo.png",
+            logo: "/partners/mgsicon.png",
             desc: "Autonomous unmanned ground vehicles and tactical systems."
         },
         {
             name: "Major Marine Systems",
             id: "MMS",
-            logo: "/partners/mms-logo.png",
+            logo: "/partners/mmsicon.png",
             desc: "Surface and sub-surface maritime autonomy and mission systems."
         }
     ];
@@ -82,13 +82,7 @@ export default function AboutPage() {
             bio: "Leads production excellence and hardware precision.",
             image: null
         },
-        {
-            name: "Gowtham Gopishetty",
-            role: "Head, Partnerships",
-            details: "Ex CEO of Biotech company | Seasoned FMCG Entrepreneur",
-            bio: "Scaling the strategic ecosystem and institutional alliances.",
-            image: null
-        }
+
     ];
 
     return (
@@ -96,18 +90,18 @@ export default function AboutPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="about-hero" style={{ padding: '160px 0 80px', background: '#fff' }}>
+            <section className="about-hero" style={{ padding: 'clamp(100px, 15vh, 160px) 0 clamp(40px, 8vh, 80px)', background: '#fff' }}>
                 <div className="container">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', letterSpacing: '4px', marginBottom: '2rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.6rem, 2vw, 0.8rem)', letterSpacing: '4px', marginBottom: '2rem' }}>
                         <span>[ COMPANY_IDENTITY ]</span>
                         <div style={{ flex: 1, height: '1px', background: 'rgba(0, 52, 166, 0.1)' }}></div>
                     </div>
 
-                    <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)', fontWeight: '900', lineHeight: '0.8', marginBottom: '2.5rem' }}>
+                    <h1 style={{ fontSize: 'clamp(2.2rem, 10vw, 6rem)', fontWeight: '900', lineHeight: '0.9', marginBottom: '2.5rem', wordBreak: 'break-word' }}>
                         CHAKRAVYUHA <span style={{ color: 'var(--accent-primary)' }}>DYNAMICS</span>
                     </h1>
 
-                    <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', maxWidth: '850px', lineHeight: '1.4' }}>
+                    <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', color: 'var(--text-secondary)', maxWidth: '850px', lineHeight: '1.4' }}>
                         <IndiaFlag />
                         India’s first <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>Physical Intelligence</span> company. We build autonomous AI systems that perceive, reason, and act in the physical world to protect India and empower tactical operations across all domains.
                     </p>
@@ -115,32 +109,32 @@ export default function AboutPage() {
             </section>
 
             {/* Vision & Mission */}
-            <section style={{ padding: '6rem 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
+            <section style={{ padding: 'clamp(3rem, 8vh, 6rem) 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
                 <div className="container">
-                    <div className="vision-mission-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem' }}>
-                        <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '2rem' }}>
+                    <div className="vision-mission-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)' }}>
+                        <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>VISION</h4>
-                            <p style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
                         </div>
-                        <div style={{ borderLeft: '4px solid var(--accent-secondary)', paddingLeft: '2rem' }}>
+                        <div style={{ borderLeft: '4px solid var(--accent-secondary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>MISSION</h4>
-                            <p style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy intelligent autonomous systems for defense and dual-use applications, protecting soldiers and establishing India's global leadership in Physical Intelligence.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy intelligent autonomous systems for defense and dual-use applications, protecting soldiers and establishing India's global leadership in Physical Intelligence.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Core Divisions */}
-            <section style={{ padding: '8rem 0', background: '#fff' }}>
+            <section style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#fff' }}>
                 <div className="container">
-                    <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: '6rem' }}>
+                    <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
                         <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontWeight: '800' }}>[ CORE_DIVISIONS ]</span>
-                        <h2 style={{ fontSize: '3.5rem', fontWeight: '900', marginTop: '1rem' }}>Sovereign Autonomy Ecosystem</h2>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem' }}>Sovereign Autonomy Ecosystem</h2>
                     </div>
 
-                    <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+                    <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
                         {divisions.map((div, i) => (
-                            <div key={i} className="product-card" style={{ padding: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', background: '#f8fafc' }}>
+                            <div key={i} className="product-card" style={{ padding: 'clamp(2rem, 4vw, 3.5rem)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', background: '#f8fafc' }}>
                                 <span className="corner corner-tl"></span>
                                 <span className="corner corner-br"></span>
                                 <div style={{ height: '140px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2.5rem' }}>
@@ -156,16 +150,16 @@ export default function AboutPage() {
             </section>
 
             {/* Leadership Section */}
-            <section id="leadership" style={{ padding: '8rem 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9' }}>
+            <section id="leadership" style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9' }}>
                 <div className="container">
-                    <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: '6rem' }}>
+                    <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
                         <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontWeight: '800' }}>[ LEADERSHIP ]</span>
-                        <h2 style={{ fontSize: '3.5rem', fontWeight: '900', marginTop: '1rem' }}>Veteran-Led. Physics-Driven.</h2>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem' }}>Veteran-Led. Physics-Driven.</h2>
                     </div>
 
                     <div className="products-grid leadership-grid">
                         {leadership.map((leader, index) => (
-                            <div key={index} className="product-card" style={{ padding: '2.5rem', minHeight: '520px', background: '#fff' }}>
+                            <div key={index} className="product-card" style={{ padding: '2.5rem', minHeight: 'auto', background: '#fff' }}>
                                 <span className="corner corner-tl"></span>
                                 <span className="corner corner-br"></span>
                                 <div className="product-image" style={{
@@ -187,7 +181,7 @@ export default function AboutPage() {
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                     <span style={{ color: 'var(--accent-primary)', fontWeight: '800', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>{leader.role.toUpperCase()}</span>
-                                    <h3 style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--text-primary)' }}>{leader.name}</h3>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)' }}>{leader.name}</h3>
                                     <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', lineHeight: '1.4', marginBottom: '1.5rem' }}>{leader.details}</p>
                                     <p style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--text-primary)', borderLeft: '2px solid var(--accent-primary)', paddingLeft: '1rem' }}>
                                         "{leader.bio}"

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
-const HackerLink = ({ href, text, children, className = "", isActive = false }) => {
+const HackerLink = ({ href, text, children, className = "", isActive = false, onClick }) => {
     const [displayText, setDisplayText] = useState(text);
     const intervalRef = useRef(null);
     const chars = "01";
@@ -40,7 +40,7 @@ const HackerLink = ({ href, text, children, className = "", isActive = false }) 
     };
 
     return (
-        <Link href={href} className={`hacker-link ${className} ${isActive ? 'active' : ''}`} onMouseEnter={handleMouseEnter}>
+        <Link href={href} className={`hacker-link ${className} ${isActive ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={onClick}>
             <span className="hacker-text">{displayText}</span>
             <span className="static-text">{text}</span>
             {children}
@@ -61,6 +61,7 @@ const HackerLink = ({ href, text, children, className = "", isActive = false }) 
 };
 
 const Navbar = () => {
+    const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const router = useRouter();
@@ -71,27 +72,42 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 50;
+            // Use 5px threshold so navbar snaps to solid almost immediately.
+            // This prevents white text on white background when scrolling from
+            // the dark hero to the light products section.
+            const isScrolled = window.scrollY > 5;
             if (isScrolled !== scrolled) {
                 setScrolled(isScrolled);
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        // Run once on mount in case page is loaded mid-scroll
+        handleScroll();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [scrolled]);
 
-    // Close mobile menu on route change
+    // Close mobile menu and mega-menu on route change
     useEffect(() => {
         setIsMobileMenuOpen(false);
+        setIsMegaMenuOpen(false);
     }, [pathname]);
 
+    const handleMegaLinkClick = () => {
+        setIsMegaMenuOpen(false);
+        setIsMobileMenuOpen(false);
+    };
+
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${!hasDarkHero ? 'solid' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <nav
+            className={`navbar ${scrolled ? 'scrolled' : ''} ${!hasDarkHero ? 'solid' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''} ${isMegaMenuOpen ? 'mega-open' : ''}`}
+            onMouseLeave={() => setIsMegaMenuOpen(false)}
+        >
             <div className="container nav-container">
-                <Link href="/" className="logo-container">
+                <Link href="/" className="logo-container" onClick={() => setIsMegaMenuOpen(false)}>
                     <img
                         src={(scrolled || !hasDarkHero || isMobileMenuOpen) ? "/partners/cdpliconbl.png" : "/partners/cdplicon.png"}
                         alt="CDPL Logo"
@@ -110,56 +126,61 @@ const Navbar = () => {
                 </button>
 
                 <div className={`nav-links ${isMobileMenuOpen ? 'show' : ''}`}>
-                    <HackerLink href="/" text="Home" isActive={pathname === '/'} />
+                    <HackerLink href="/" text="Home" isActive={pathname === '/'} onClick={() => setIsMegaMenuOpen(false)} />
                     <div className="dropdown">
-                        <HackerLink href="/about" text="About CDPL" isActive={pathname === '/about'} />
+                        <HackerLink href="/about" text="About CDPL" isActive={pathname === '/about'} onClick={() => setIsMegaMenuOpen(false)} />
                         <div className="dropdown-content">
-                            <Link href="/about">Company Overview</Link>
-                            <Link href="/about#leadership">Leadership</Link>
+                            <Link href="/about" onClick={() => setIsMegaMenuOpen(false)}>Company Overview</Link>
+                            <Link href="/about#leadership" onClick={() => setIsMegaMenuOpen(false)}>Leadership</Link>
                         </div>
                     </div>
-                    <div className="dropdown mega-dropdown">
+                    <div
+                        className="dropdown mega-dropdown"
+                        onMouseEnter={() => setIsMegaMenuOpen(true)}
+                    >
                         <HackerLink href="/#products" text="Products" isActive={pathname.startsWith('/products') || pathname === '/mas' || pathname === '/mgs' || pathname === '/mms'} />
-                        <div className="mega-menu">
+                        <div className={`mega-menu ${isMegaMenuOpen ? 'active' : ''}`}>
                             <div className="mega-menu-container">
                                 <div className="mega-column" style={{ borderRight: '1px solid rgba(0, 57, 166, 0.1)' }}>
-                                    <Link href="/mas" className={`mega-header ${pathname === '/mas' || pathname.startsWith('/products/mas') ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <img src="/partners/masicon.png" alt="MAS" style={{ height: '30px', width: 'auto', objectFit: 'contain', position: 'relative', zindex: '2' }} />
-                                        <span className="mega-category" style={{ color: 'var(--team-mas)', position: 'relative', zindex: '2' }}>Major Aerospace Systems</span>
+                                    <Link href="/mas" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mas' || pathname.startsWith('/products/mas') ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
+                                        <img src="/partners/masicon.png" alt="MAS" style={{ height: '30px', width: 'auto', objectFit: 'contain', position: 'relative', zIndex: '2' }} />
+                                        <span className="mega-category" style={{ color: 'var(--team-mas)', position: 'relative', zIndex: '2' }}>Major Aerospace Systems</span>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
                                         <span className="corner corner-br"></span>
                                     </Link>
                                     <div className="mega-links">
-                                        <Link href="/products/bard" className="mega-link-item team-mas">
+                                        <Link href="/products/bard" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
                                             <span className="link-title">BARD Family</span>
                                             <span className="link-desc">Strategic Quad ISR</span>
                                         </Link>
-                                        <Link href="/products/horizon-vtol" className="mega-link-item team-mas">
+                                        <Link href="/products/horizon-vtol" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
                                             <span className="link-title">HORIZON VTOL</span>
                                             <span className="link-desc">Long Range Fixed-Wing</span>
                                         </Link>
-                                        <Link href="/products/horizon-fpv" className="mega-link-item team-mas">
+                                        <Link href="/products/horizon-fpv" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
                                             <span className="link-title">HORIZON FPV</span>
                                             <span className="link-desc">Advanced Trainer</span>
                                         </Link>
-                                        <Link href="/products/stinger" className="mega-link-item team-mas">
+                                        <Link href="/products/stinger" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
                                             <span className="link-title">STINGER Family</span>
                                             <span className="link-desc">Tactical Strike</span>
                                         </Link>
-                                        <Link href="/products/aot" className="mega-link-item team-mas">
+                                        <Link href="/products/aot" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
                                             <span className="link-title">AOT Trainer</span>
                                             <span className="link-desc">Pilot Training</span>
                                         </Link>
-                                        <Link href="/mas" className="view-all-link" style={{ color: 'var(--team-mas)' }}>View MAS Portfolio &rarr;</Link>
+                                        <Link href="/mas" onClick={handleMegaLinkClick} className="view-all-link" style={{ color: 'var(--team-mas)' }}>View MAS Portfolio &rarr;</Link>
                                     </div>
                                 </div>
 
                                 <div className="mega-column" style={{ borderRight: '1px solid rgba(75, 83, 32, 0.1)' }}>
-                                    <Link href="/mgs" className={`mega-header ${pathname === '/mgs' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <div style={{ height: '30px', width: '40px', background: 'var(--bg-tactical)', border: '1px solid var(--team-mgs)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'var(--team-mgs)', fontWeight: 'bold', position: 'relative', zindex: '2' }}>MGS</div>
-                                        <span className="mega-category" style={{ color: 'var(--team-mgs)', position: 'relative', zindex: '2' }}>Major Ground Systems</span>
+                                    <Link href="/mgs" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mgs' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
+                                        <div style={{ height: '30px', width: '40px', background: '#ffffff', border: '1px solid var(--team-mgs)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2', overflow: 'hidden' }}>
+                                            <img src="/partners/mgsicon.png" alt="MGS" style={{ height: '26px', width: '36px', objectFit: 'contain' }} />
+                                        </div>
+                                        <span className="mega-category" style={{ color: 'var(--team-mgs)', position: 'relative', zIndex: '2' }}>Major Ground Systems</span>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
@@ -169,14 +190,14 @@ const Navbar = () => {
                                         <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', fontStyle: 'italic' }}>
                                             [ Under research and development ]
                                         </p>
-                                        <Link href="/mgs" className="view-all-link" style={{ color: 'var(--team-mgs)', marginTop: '1rem', display: 'block' }}>View MGS Portfolio &rarr;</Link>
+                                        <Link href="/mgs" onClick={handleMegaLinkClick} className="view-all-link" style={{ color: 'var(--team-mgs)', marginTop: '1rem', display: 'block' }}>View MGS Portfolio &rarr;</Link>
                                     </div>
                                 </div>
 
                                 <div className="mega-column">
-                                    <Link href="/mms" className={`mega-header ${pathname === '/mms' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <div style={{ height: '30px', width: '40px', background: 'var(--bg-tactical)', border: '1px solid var(--team-mms)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'var(--team-mms)', fontWeight: 'bold', position: 'relative', zindex: '2' }}>MMS</div>
-                                        <span className="mega-category" style={{ color: 'var(--team-mms)', position: 'relative', zindex: '2' }}>Major Marine Systems</span>
+                                    <Link href="/mms" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mms' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
+                                        <div style={{ height: '30px', width: '40px', background: 'var(--bg-tactical)', border: '1px solid var(--team-mms)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'var(--team-mms)', fontWeight: 'bold', position: 'relative', zIndex: '2' }}>MMS</div>
+                                        <span className="mega-category" style={{ color: 'var(--team-mms)', position: 'relative', zIndex: '2' }}>Major Marine Systems</span>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
@@ -186,14 +207,14 @@ const Navbar = () => {
                                         <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', fontStyle: 'italic' }}>
                                             [ Under research and development ]
                                         </p>
-                                        <Link href="/mms" className="view-all-link" style={{ color: 'var(--team-mms)', marginTop: '1rem', display: 'block' }}>View MMS Portfolio &rarr;</Link>
+                                        <Link href="/mms" onClick={handleMegaLinkClick} className="view-all-link" style={{ color: 'var(--team-mms)', marginTop: '1rem', display: 'block' }}>View MMS Portfolio &rarr;</Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <HackerLink href="/resources" text="Resources" isActive={pathname === '/resources'} />
-                    <Link href="/contact" className="btn btn-primary nav-btn">Contact</Link>
+                    <HackerLink href="/resources" text="Resources" isActive={pathname === '/resources'} onClick={() => setIsMegaMenuOpen(false)} />
+                    <Link href="/contact" className="btn btn-primary nav-btn" onClick={() => setIsMegaMenuOpen(false)}>Contact</Link>
                 </div>
             </div>
 

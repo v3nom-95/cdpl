@@ -154,10 +154,10 @@ a:hover {
   left: 0;
   width: 100%;
   padding: 0;
-  /* Removed padding to avoid gaps */
   background: transparent;
   z-index: 1000;
-  transition: all 0.4s ease;
+  /* Fast transition so the navbar snaps white quickly during scroll */
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 /* Section Reveal Animations */
@@ -172,29 +172,24 @@ a:hover {
   transform: translateY(0);
 }
 
+/* Non-home pages (solid) AND scrolled-down state: white navbar */
+.navbar.solid,
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(0, 57, 166, 0.08);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* Non-home pages: always solid white navbar */
-.navbar.solid {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(0, 57, 166, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+.navbar.solid .hacker-link,
+.navbar.scrolled .hacker-link {
+  color: var(--text-primary) !important;
 }
 
-.navbar.solid .hacker-link {
-  color: var(--text-secondary);
-}
-
-.navbar.solid .hacker-link:hover {
-  color: var(--accent-primary);
+.navbar.solid .hacker-link:hover,
+.navbar.scrolled .hacker-link:hover {
+  color: var(--accent-primary) !important;
 }
 
 .navbar.solid .nav-btn {
@@ -224,15 +219,15 @@ a:hover {
 }
 
 .nav-logo {
-  height: 65px;
-  max-width: 220px;
+  height: clamp(45px, 6vw, 65px);
+  max-width: clamp(140px, 20vw, 220px);
   width: auto;
   object-fit: contain;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled .nav-logo {
-  height: 50px;
+  height: clamp(35px, 5vw, 50px);
 }
 
 .logo-container:hover .nav-logo {
@@ -710,9 +705,8 @@ a:hover {
 
 /* Horizontal Carousel */
 .product-carousel-container {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
+  width: 100%;
+  margin: 0;
   overflow: hidden;
   position: relative;
   padding: 2rem 0;
@@ -1132,8 +1126,18 @@ a:hover {
   /* Allow mega-menu to reference navbar width */
 }
 
+.mega-dropdown .mega-menu.active,
+.mega-open .mega-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0);
+}
+
 .mega-menu {
   display: none;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 100%;
   left: 0;
@@ -1141,24 +1145,11 @@ a:hover {
   background: #ffffff;
   border-top: 1px solid var(--border-color);
   border-bottom: 2px solid var(--accent-primary);
-  box-shadow: 0 20px 50px rgba(0, 57, 166, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 57, 166, 0.2);
   padding: 3rem 0;
   z-index: 999;
-}
-
-/* Hover Bridge - Prevents menu disappearance */
-.mega-menu::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  background: transparent;
-}
-
-.mega-dropdown:hover .mega-menu {
-  display: block;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .mega-menu-container {
@@ -1333,8 +1324,21 @@ a:hover {
     display: none;
   }
 
+  .nav-container {
+    padding: 1rem 1.5rem !important;
+  }
+
   .hero-content h1 {
-    font-size: 2.8rem;
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    line-height: 1.1;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
   }
 }
 
@@ -1455,26 +1459,26 @@ a:hover {
 
 @keyframes logoEntranceAdvanced {
   0% {
-    transform: translate(calc(50vw - 175px - 4rem), 25vh) scale(0.2) rotate(-10deg);
+    transform: translate(0, 25vh) scale(0.2) rotate(-10deg);
     opacity: 0;
     filter: blur(20px) brightness(3);
   }
 
   35% {
-    transform: translate(calc(50vw - 175px - 4rem), 25vh) scale(1.05) rotate(2deg);
+    transform: translate(0, 25vh) scale(1.05) rotate(2deg);
     opacity: 1;
     filter: blur(0px) brightness(1.5);
   }
 
   60% {
     /* Lock Center */
-    transform: translate(calc(50vw - 175px - 4rem), 25vh) scale(1) rotate(0deg);
+    transform: translate(0, 25vh) scale(1) rotate(0deg);
     opacity: 1;
     filter: blur(0px) brightness(1);
   }
 
   80% {
-    transform: translate(calc(50vw - 175px - 4rem), 25vh) scale(1) rotate(0deg);
+    transform: translate(0, 25vh) scale(1) rotate(0deg);
   }
 
   100% {
@@ -1482,6 +1486,33 @@ a:hover {
     transform: translate(0, 0) scale(1) rotate(0deg);
     opacity: 1;
     filter: blur(0px) brightness(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .mas-main-logo {
+    max-width: 240px;
+  }
+
+  .mas-header {
+    padding: 0 1.5rem;
+    min-height: 12vh;
+  }
+
+  .mas-hero-content {
+    padding: 1rem 1.5rem;
+  }
+
+  @keyframes logoEntranceAdvanced {
+    0% {
+      transform: translate(0, 15vh) scale(0.5);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
   }
 }
 
@@ -2138,8 +2169,15 @@ a:hover {
   }
 }
 
-/* Global Responsiveness Fixes */
+/* =============================================
+   COMPREHENSIVE MOBILE OVERHAUL
+   Targets: 992px (tablet), 768px (mobile), 480px (small mobile)
+   ============================================= */
+
+/* ---- TABLET (≤ 992px) ---- */
 @media (max-width: 992px) {
+
+  /* Navigation */
   .nav-container {
     padding: 1rem 1.5rem !important;
   }
@@ -2148,12 +2186,49 @@ a:hover {
     padding: 0.6rem 1.5rem !important;
   }
 
+  /* Container */
   .container {
     padding: 0 1.5rem !important;
   }
 
+  /* Typography */
   .section-title {
-    font-size: 2.2rem !important;
+    font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+    letter-spacing: 0 !important;
+  }
+
+  .section-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Hero */
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 9vw, 4rem) !important;
+    letter-spacing: -1px !important;
+    line-height: 1.05 !important;
+  }
+
+  .hero-content p {
+    font-size: 1rem !important;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 1rem 1.5rem !important;
+  }
+
+  /* About / Platform Section */
+  .about-section {
+    padding: 5rem 0 !important;
   }
 
   .about-content {
@@ -2161,28 +2236,309 @@ a:hover {
     gap: 3rem !important;
   }
 
-  .hero-content h1 {
-    font-size: 3.5rem !important;
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 2rem;
+  /* Products Grid — 1 column on tablet */
+  .products-section {
+    padding: 5rem 0 !important;
   }
 
-  .btn {
-    width: 100%;
-    padding: 1rem 1.5rem !important;
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 4rem 0 2rem !important;
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  /* Form factor cards */
+  .form-factor-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Feature grid */
+  .feature-grid-v2 {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Specs container */
+  .specs-container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 4rem 0 !important;
+  }
+
+  /* Tech stats grid */
+  .tech-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Gallery layout */
+  .gallery-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .gallery-thumbnails {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  /* Variant table — force horizontal scroll */
+  .variant-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Spec hero */
+  .spec-hero {
+    padding: 120px 0 60px !important;
+    min-height: auto !important;
+  }
+
+  /* Tactical capabilities matrix */
+  .tech-hero-section {
+    padding: 0 1.5rem !important;
+  }
+
+  /* Hidden-mobile utility */
+  .hidden-mobile {
+    display: none !important;
   }
 }
 
-@media (max-width: 480px) {
+/* ---- MOBILE (≤ 768px) ---- */
+@media (max-width: 768px) {
+
+  /* Global */
+  .container {
+    padding: 0 1.2rem !important;
+  }
+
+  /* Hero */
+  .hero-content {
+    margin-top: -20px;
+    padding: 0 1rem;
+  }
+
   .hero-content h1 {
-    font-size: 2.8rem !important;
+    font-size: clamp(2.2rem, 11vw, 3rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.5px !important;
+    word-break: break-word;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem !important;
+    padding: 0 0.5rem;
+  }
+
+  .overline {
+    font-size: 0.7rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Sections */
+  .about-section,
+  .products-section {
+    padding: 4rem 0 !important;
+  }
+
+  /* Stat cards — 2 per row */
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .stat-card {
+    padding: 1.5rem 1rem !important;
   }
 
   .stat-card h3 {
     font-size: 2.5rem !important;
+  }
+
+  /* Product card content */
+  .product-image {
+    height: 220px !important;
+  }
+
+  .product-content {
+    padding: 1.5rem !important;
+  }
+
+  .product-content h3 {
+    font-size: 1.4rem !important;
+  }
+
+  /* Carousel */
+  .product-carousel {
+    padding: 1rem 5vw !important;
+    gap: 1.5rem !important;
+  }
+
+  .product-carousel-item {
+    flex: 0 0 85vw !important;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .footer {
+    padding: 3rem 0 1.5rem !important;
+  }
+
+  /* Nav container */
+  .nav-container {
+    padding: 0.8rem 1.2rem !important;
+  }
+
+  /* MAS Page */
+  .mas-page {
+    padding-top: 80px !important;
+  }
+
+  .mas-header {
+    padding: 0 1.2rem !important;
+    min-height: 10vh !important;
+  }
+
+  .mas-main-logo {
+    max-width: 200px !important;
+  }
+
+  .mas-hero-content {
+    padding: 1.5rem 1.2rem !important;
+  }
+
+  /* About page hero */
+  .about-hero {
+    padding: 100px 1.2rem 3rem !important;
+  }
+
+  /* Vision/mission grid */
+  .vision-mission-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Product detail pages */
+  .spec-hero {
+    padding: 100px 0 40px !important;
+  }
+
+  .tech-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .tech-stat-value {
+    font-size: 2rem !important;
+  }
+
+  .gallery-thumbnails {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .form-factor-card {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .form-factor-card h3 {
+    font-size: 1.8rem !important;
+  }
+
+  /* Bard hero two-col layout */
+  div[style*="gridTemplateColumns: '1fr 1fr'"],
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Partner logos */
+  .partner-logo-grid {
+    gap: 2rem !important;
+  }
+}
+
+/* ---- SMALL MOBILE (≤ 480px) ---- */
+@media (max-width: 480px) {
+
+  /* Hero */
+  .hero-content h1 {
+    font-size: clamp(2rem, 13vw, 2.6rem) !important;
+  }
+
+  /* Stat cards — full width on tiny screens */
+  .about-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stat-card h3 {
+    font-size: 2.2rem !important;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: clamp(1.5rem, 8vw, 1.9rem) !important;
+  }
+
+  /* Buttons */
+  .btn {
+    font-size: 0.8rem !important;
+    padding: 0.9rem 1.2rem !important;
+  }
+
+  /* Carousel item full width */
+  .product-carousel-item {
+    flex: 0 0 92vw !important;
+  }
+
+  .product-carousel {
+    padding: 1rem 4vw !important;
+  }
+
+  /* Product card */
+  .product-image {
+    height: 180px !important;
+  }
+
+  /* Footer */
+  .footer-section h3 {
+    font-size: 1rem !important;
+  }
+
+  /* MAS logo smaller */
+  .mas-main-logo {
+    max-width: 160px !important;
+  }
+
+  /* Spec hero stats */
+  .tech-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Nav logo */
+  .nav-logo {
+    max-width: 120px !important;
+    height: auto !important;
+  }
+
+  /* Gallery sidebar on mobile phones */
+  .gallery-thumbnails {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }

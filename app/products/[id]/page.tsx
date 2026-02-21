@@ -75,43 +75,43 @@ export default function ProductPage() {
                         <div className="reveal-section" style={{ maxWidth: '800px' }}>
                             <span className="tech-hero-subtitle" style={{ color: 'var(--accent-primary)', letterSpacing: '4px', fontWeight: '800', display: 'block', marginBottom: '1.5rem', fontSize: '0.8rem' }}>{product.brand} // {product.category}</span>
 
-                            <h1 className="tech-hero-title" style={{ color: '#fff', marginBottom: '1.5rem', fontSize: 'clamp(4rem, 12vw, 9rem)', fontWeight: '900', lineHeight: '0.8' }}>
+                            <h1 className="tech-hero-title" style={{ color: '#fff', marginBottom: '1.5rem', fontSize: 'clamp(3.5rem, 14vw, 9rem)', fontWeight: '900', lineHeight: '1' }}>
                                 BARD
                             </h1>
 
-                            <p style={{
-                                fontSize: '1.2rem',
+                            <p className="bard-hero-tagline" style={{
+                                fontSize: '1.1rem',
                                 color: 'rgba(255,255,255,0.7)',
                                 maxWidth: '550px',
                                 fontWeight: '400',
                                 lineHeight: '1.6',
-                                marginBottom: '4rem'
+                                marginBottom: 'clamp(2rem, 5vh, 4rem)'
                             }}>
                                 {product.tagline}
                             </p>
 
-                            {/* MAS Highlight with Logo - Positioned above specs as requested */}
-                            <div style={{
+                            {/* MAS Highlight with Logo */}
+                            <div className="bard-mas-label" style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '1.2rem',
+                                gap: '1rem',
                                 marginBottom: '2.5rem',
                                 color: 'var(--accent-primary)',
                                 fontWeight: '900',
-                                fontSize: '0.8rem',
-                                letterSpacing: '4px',
+                                fontSize: '0.75rem',
+                                letterSpacing: '2px',
                                 fontFamily: 'var(--font-mono)'
                             }}>
-                                <img src="/partners/masicon.png" alt="MAS" style={{ height: '35px', filter: 'brightness(0) invert(1)' }} />
-                                <div style={{ height: '2px', width: '40px', background: 'var(--accent-primary)' }}></div>
-                                <span>[ MULTIMISSION_ISR_TACTICAL_NODE ]</span>
+                                <img src="/partners/masicon.png" alt="MAS" style={{ height: '30px', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
+                                <div style={{ height: '2px', width: '30px', background: 'var(--accent-primary)', flexShrink: 0 }}></div>
+                                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>[ MULTIMISSION_ISR_TACTICAL_NODE ]</span>
                             </div>
 
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem' }}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1.2rem, 4vw, 4rem)' }}>
                                 {product.heroSpecs.map((spec: any, i: number) => (
-                                    <div key={i} style={{ borderLeft: '3px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
-                                        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '2px', marginBottom: '0.6rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{spec.label}</div>
-                                        <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#fff' }}>{spec.value}</div>
+                                    <div key={i} style={{ borderLeft: '3px solid var(--accent-primary)', paddingLeft: '1rem' }}>
+                                        <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '2px', marginBottom: '0.5rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{spec.label}</div>
+                                        <div style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', fontWeight: '900', color: '#fff' }}>{spec.value}</div>
                                     </div>
                                 ))}
                             </div>
@@ -163,20 +163,21 @@ export default function ProductPage() {
                         </div>
                     </div>
 
-                    <div style={{ position: 'absolute', bottom: '4rem', right: '4rem', textAlign: 'right', opacity: 0.5 }}>
+                    {/* Bottom status — hidden on mobile to prevent overflow */}
+                    <div className="bard-status-tag" style={{ position: 'absolute', bottom: '4rem', right: '4rem', textAlign: 'right', opacity: 0.5 }}>
                         <div style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>SYSTEM_STATUS: OPERATIONAL</div>
                         <div style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>THREAT_LEVEL: NOMINAL</div>
                     </div>
                 </section>
 
                 {/* Tactical Context Section */}
-                <section className="reveal-section" style={{ minHeight: '80vh', position: 'relative', display: 'flex', alignItems: 'center', background: '#fff' }}>
+                <section className="reveal-section bard-context-section" style={{ position: 'relative', display: 'flex', alignItems: 'center', background: '#fff' }}>
                     <div className="scanline-v2"></div>
-                    <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                    <div className="container bard-context-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(2rem, 6vw, 4rem)', alignItems: 'center', padding: 'clamp(4rem, 10vh, 8rem) 1.5rem' }}>
                         <div>
                             <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '700' }}>[ MISSION_READY ]</span>
-                            <h2 style={{ fontSize: '4rem', fontWeight: '800', margin: '1.5rem 0', lineHeight: '1.1', color: 'var(--text-primary)' }}>CINEMATIC SURVEILLANCE</h2>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '3rem' }}>
+                            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)', fontWeight: '800', margin: '1.5rem 0', lineHeight: '1.1', color: 'var(--text-primary)' }}>CINEMATIC SURVEILLANCE</h2>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2.5vw, 1.2rem)', marginBottom: '3rem' }}>
                                 Every system is a modular node in a vast, autonomous network. {product.description}
                             </p>
                             <Link href="/contact" className="btn btn-primary">Deployment Strategy</Link>
@@ -194,11 +195,11 @@ export default function ProductPage() {
                 </section>
 
                 {/* Form Factor Breakdown */}
-                <section className="reveal-section" style={{ background: '#fafafa', padding: '10rem 0', borderTop: '1px solid #eee' }}>
+                <section className="reveal-section" style={{ background: '#fafafa', padding: 'clamp(4rem, 8vh, 10rem) 0', borderTop: '1px solid #eee' }}>
                     <div className="container">
-                        <div style={{ marginBottom: '6rem' }}>
+                        <div style={{ marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
                             <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '700' }}>[ VARIANTS ]</span>
-                            <h2 style={{ fontSize: '5rem', fontWeight: '900', marginTop: '1rem', letterSpacing: '-2px', color: 'var(--text-primary)' }}>THE BARD FAMILY</h2>
+                            <h2 style={{ fontSize: 'clamp(2.2rem, 8vw, 5rem)', fontWeight: '900', marginTop: '1rem', letterSpacing: '-1px', color: 'var(--text-primary)' }}>THE BARD FAMILY</h2>
                         </div>
 
                         <div className="form-factor-container">
@@ -218,7 +219,7 @@ export default function ProductPage() {
                                         background: '#fff',
                                         borderColor: 'rgba(0,0,0,0.08)',
                                         color: 'var(--text-primary)',
-                                        padding: '4rem 3rem',
+                                        padding: 'clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem)',
                                         boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
                                         position: 'relative'
                                     }}>
@@ -255,7 +256,7 @@ export default function ProductPage() {
                                             <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>ALTITUDE</span><span style={{ color: 'var(--text-primary)' }}>{v.altitude}</span></li>
                                         </ul>
 
-                                        <div style={{ marginTop: '4rem' }}>
+                                        <div style={{ marginTop: 'clamp(2rem, 4vh, 4rem)' }}>
                                             <button className="btn btn-outline" style={{
                                                 borderColor: 'var(--border-color)',
                                                 color: 'var(--text-primary)',
@@ -274,16 +275,16 @@ export default function ProductPage() {
                 </section>
 
                 {/* Tactical Capabilities Matrix */}
-                <section className="reveal-section" style={{ background: '#fff', padding: '10rem 0', borderTop: '1px solid #eee' }}>
+                <section className="reveal-section" style={{ background: '#fff', padding: 'clamp(4rem, 8vh, 10rem) 0', borderTop: '1px solid #eee' }}>
                     <div className="container">
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(3rem, 6vw, 8rem)' }}>
                             <div>
-                                <h4 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '2rem', lineHeight: '1.1', color: 'var(--text-primary)' }}>SOFTWARE-DEFINED AUTONOMY</h4>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                                <h4 style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', fontWeight: '800', marginBottom: '2rem', lineHeight: '1.1', color: 'var(--text-primary)' }}>SOFTWARE-DEFINED AUTONOMY</h4>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', lineHeight: '1.6' }}>
                                     Lattice-powered edge processing enables Bard to identify targets, categorize threats, and execute mission-critical decisions without human intervention.
                                 </p>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem' }}>
                                 {product.featureCards.map((card: any, i: number) => (
                                     <div key={i}>
                                         <div style={{ color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', marginBottom: '1.5rem', letterSpacing: '2px' }}>[ 0{i + 1} // {card.title.toUpperCase()} ]</div>
@@ -296,6 +297,61 @@ export default function ProductPage() {
                 </section>
 
                 <Footer />
+
+                <style jsx>{`
+                    /* ---- BARD PAGE MOBILE STYLES ---- */
+
+                    /* Hero: make gradient cover full width on mobile (text is short) */
+                    @media (max-width: 768px) {
+                        /* Full-width dark overlay on mobile so text is always readable */
+                        .tech-hero-section > div[style*="linear-gradient"] {
+                            background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 100%) !important;
+                        }
+
+                        /* Hero content: use full width, reduce padding */
+                        .tech-hero-section .container {
+                            padding: 0 1.4rem !important;
+                        }
+                        .tech-hero-section .container > div {
+                            max-width: 100% !important;
+                            padding: 7rem 0 4rem !important;
+                        }
+
+                        /* MAS label: hide the long text tag, keep icon */
+                        .bard-mas-label span:last-child {
+                            display: none;
+                        }
+
+                        /* Status tag: hide on mobile to avoid right-side overflow */
+                        .bard-status-tag {
+                            display: none !important;
+                        }
+
+                        /* Spec values: reduce size */
+                        .bard-hero-tagline {
+                            font-size: 0.95rem !important;
+                            margin-bottom: 2rem !important;
+                        }
+
+                        /* Variant card h3 */
+                        .form-factor-card h3 {
+                            font-size: 1.6rem !important;
+                        }
+                        .form-factor-card p {
+                            margin-bottom: 1.5rem !important;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        /* On small phones, also hide the MAS line decoration */
+                        .bard-mas-label div {
+                            display: none !important;
+                        }
+                        .tech-hero-section .container > div {
+                            padding: 6rem 0 3rem !important;
+                        }
+                    }
+                `}</style>
             </div>
         );
     }
