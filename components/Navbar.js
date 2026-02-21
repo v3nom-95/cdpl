@@ -379,35 +379,47 @@ const Navbar = () => {
                         width: 100%;
                     }
 
-                    /* Style the Mega Headers (MAS, MGS, MMS) */
+                    /* Force a uniform flex row for the headers on mobile */
                     .mega-header {
-                        display: block !important;
-                        margin-bottom: 0.25rem !important;
-                        padding: 0.5rem !important;
-                        text-align: center;
+                        display: flex !important;
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        justify-content: flex-start !important;
+                        margin-bottom: 0.5rem !important;
+                        padding: 0.5rem 1rem !important; /* Adding side padding to pull it in */
+                        text-align: left !important;
+                        width: 100%;
+                        max-width: 300px; /* Constrain width to keep it clustered */
                     }
                     
-                    /* Allow images in mobile menu */
-                    .mega-header img { 
-                         display: block !important; 
-                         margin: 0 auto 0.5rem auto;
+                    /* Create a fixed-width housing for all three mobile images */
+                    .mega-header > div,
+                    .mega-header > img { 
+                         display: flex !important; 
+                         width: 56px !important;
+                         height: 36px !important;
+                         margin: 0 15px 0 0 !important; /* Push text to the right uniformly */
+                         object-fit: contain;
+                         flex-shrink: 0;
+                         align-items: center;
+                         justify-content: center;
                     }
 
-                    /* For MGS and MMS containers, hide the borders in mobile to look like the MAS logo */
+                    /* Only for the MGS/MMS divs: Hide their borders in mobile view, just show the transparent icon */
                     .mega-header div[style*="border: 1px solid"] {
                          border: none !important;
                          background: transparent !important;
-                         display: flex !important;
-                         margin: 0 auto 0.5rem auto;
                     }
                     
                     .mega-category {
-                        font-family: var(--font-mono); /* Use font-mono for sub-links */
-                        font-size: 0.9rem;
-                        color: #555 !important; /* Dark grey for contrast */
+                        font-family: var(--font-mono); 
+                        font-size: 0.85rem; /* Slightly smaller for mobile */
+                        color: #555 !important; 
                         text-transform: uppercase;
                         letter-spacing: 1px;
                         display: block;
+                        text-align: left !important; /* Force left alignment */
+                        line-height: 1.2;
                     }
 
                     /* Hide specific sub-links and descriptions on mobile to reduce clutter */
