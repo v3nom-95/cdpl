@@ -1,11 +1,11 @@
 export const products = {
     'bard': {
-        name: "Battlefield Artillery Recon Drone (BARD)",
-        tagline: "QUADCOPTER ISR · TACTICAL AUTONOMY",
+        name: "Battlefield Aerial Reconnaissance Device (BARD)",
+        tagline: "GROUP 2 UAS · TACTICAL AUTONOMY",
         brand: "MAS",
         category: "ISR",
-        description: "A multi-role quadcopter family designed for strategic reconnaissance, thermal imaging, and tactical payload delivery.",
-        longDescription: "BARD is a mission-critical quadcopter system engineered for persistent battlefield intelligence. The platform supports multiple variants ranging from standard day surveillance to advanced thermal imaging with Laser Range Finding (LRF) and specialized grenade dropping capabilities.",
+        description: "A multi-role Group 2 UAS family designed for strategic reconnaissance, thermal imaging, and tactical payload delivery.",
+        longDescription: "BARD is a mission-critical Autonomous Aerial System engineered for persistent battlefield intelligence. The platform supports multiple variants ranging from standard day surveillance to advanced thermal imaging with Laser Range Finding (LRF) and specialized payload release capabilities.",
         heroSpecs: [
             { label: "Endurance", value: "60m" },
             { label: "Range", value: "5km" },
@@ -65,8 +65,8 @@ export const products = {
         tagline: "FIXED WING ISR · LONG RANGE",
         brand: "MAS",
         category: "ISR",
-        description: "Vertical Take-Off and Landing fixed-wing platform for extended surveillance and training missions.",
-        longDescription: "The HORIZON VTOL combines the efficiency of fixed-wing flight with the launch flexibility of a multicopter. It is the premier choice for long-endurance reconnaissance and training, offering stable flight characteristics and advanced multi-axis stabilized sensor suites.",
+        description: "Vertical Take-Off and Landing (VTOL) ISR system for extended surveillance and tactical missions.",
+        longDescription: "The HORIZON VTOL combines the efficiency of fixed-wing flight with the launch flexibility of a multirotor. It is the premier choice for long-endurance reconnaissance and beyond visual line of sight (BVLOS) defense operations, offering stable flight characteristics and advanced multi-axis stabilized sensor suites.",
         heroSpecs: [
             { label: "Endurance", value: "40m" },
             { label: "Range", value: "5km" },
@@ -155,11 +155,11 @@ export const products = {
     },
     'stinger': {
         name: "STINGER",
-        tagline: "FPV KAMIKAZE · PRECISION STRIKE",
+        tagline: "LOITERING MUNITION · KINETIC INTERCEPT",
         brand: "MAS",
         category: "TACTICAL",
-        description: "High-performance FPV quadcopters optimized for precision strike and tactical kamikaze missions.",
-        longDescription: "The STINGER family represents the cutting edge of tactical expendable UAVs. Ranging from 7 to 15 inches, these platforms are designed for high-speed interception, heavy payload delivery, and precision target engagement in contested environments.",
+        description: "High-performance attritable aircraft optimized for precision strike and loitering munition missions.",
+        longDescription: "The STINGER family represents the cutting edge of kinetic interceptors and tactical loitering munitions. Ranging from 7 to 15 inches, these platforms are designed for high-speed interception, heavy payload delivery, and precision target engagement in contested environments.",
         heroSpecs: [
             { label: "Endurance", value: "40m" },
             { label: "Combat Range", value: "5km" },
@@ -201,11 +201,11 @@ export const products = {
         imageClass: "product-image-hydra"
     },
     'aot': {
-        name: "Aerial Observation Trainer (AOT)",
-        tagline: "QUADCOPTER TRAINER · PROP GUARDED",
+        name: "Attritable Observation Trainer (AOT)",
+        tagline: "TACTICAL TRAINER UAS · PROP GUARDED",
         brand: "MAS",
         category: "TRAINER",
-        description: "Safe and durable quadcopter trainer for entry-level UAV pilots and observation training.",
+        description: "Safe and durable tactical trainer UAS for entry-level pilots and observation training.",
         longDescription: "The AOT 7-inch variant is the gold standard for pilot training. Featuring integrated prop guards and a stable analog FPV system, it allows trainees to master flight dynamics with minimal risk to the equipment or personnel.",
         heroSpecs: [
             { label: "Endurance", value: "30m" },

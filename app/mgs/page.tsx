@@ -81,8 +81,8 @@ export default function Mgs() {
                         letterSpacing: '0.5px',
                         marginBottom: '3rem'
                     }}>
-                        Autonomous ground vehicles and tactical robotics platforms<br />
-                        are currently in active development.<br />
+                        Unmanned Ground Vehicles (UGVs), Robotic Combat Vehicles (RCVs), and Counter-UAS (C-UAS) systems<br />
+                        are currently in active development for human-machine teaming.<br />
                         Classified deployment schedule pending.
                     </p>
 

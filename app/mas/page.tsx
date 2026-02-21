@@ -63,12 +63,12 @@ export default function Mas() {
                     }}>
                         <div className="mission-para" style={{ borderLeft: '2px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
                             <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
-                                <strong style={{ color: 'var(--text-primary)' }}>Major Aerospace Systems (MAS)</strong> — a Bharat-rooted global leader — stands at the forefront of innovation in aerospace and autonomous defense technology. We pioneer the design and deployment of next-generation platforms and intelligent multi-domain technologies.
+                                <strong style={{ color: 'var(--text-primary)' }}>Major Aerospace Systems (MAS)</strong> — a Bharat-rooted global leader — stands at the forefront of software-defined warfare and Autonomous Aerial Systems (AAS). We pioneer the design and deployment of Edge AI-driven platforms and Group 1/2/3 UAVs for intelligent multi-domain command and control.
                             </p>
                         </div>
                         <div className="mission-para">
                             <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
-                                Our solutions are engineered for high-impact defense across <span style={{ color: 'var(--accent-primary)', fontWeight: '600' }}>land, sea, air, and space</span>. MAS is redefining the future of national security, enabling partners to protect sovereign interests with precision and confidence.
+                                Our solutions are engineered for an AI-enabled kill chain across <span style={{ color: 'var(--accent-primary)', fontWeight: '600' }}>land, sea, air, and space</span>. MAS is redefining the future of national security, providing kinetic interceptors and beyond visual line of sight (BVLOS) defense architectures to protect sovereign interests.
                             </p>
                         </div>
                     </div>
@@ -115,9 +115,9 @@ export default function Mas() {
                                     id: 'bard',
                                     name: 'BARD Family',
                                     nickname: 'SENTINEL',
-                                    type: 'RECON/ISR',
-                                    tagline: 'QUADCOPTER ISR',
-                                    desc: 'Strategic quadcopter family supporting Day/Thermal ISR, LRF, and tactical payload delivery.',
+                                    type: 'GROUP 2 UAS',
+                                    tagline: 'TACTICAL ISR PLATFORM',
+                                    desc: 'Advanced autonomous aerial system supporting Day/Night Thermal ISR, LRF, and multi-mission payload integration.',
                                     imgClass: 'product-image-bard',
                                     link: '/products/bard'
                                 },
@@ -145,9 +145,9 @@ export default function Mas() {
                                     id: 'stinger',
                                     name: 'STINGER Family',
                                     nickname: 'HYDRA V4',
-                                    type: 'TACTICAL STRIKE',
-                                    tagline: 'FPV KAMIKAZE',
-                                    desc: 'Expendable high-performance quads (7-15") for precision intercept and heavy payload strike.',
+                                    type: 'KINETIC INTERCEPT',
+                                    tagline: 'LOITERING MUNITION',
+                                    desc: 'Attritable, high-performance platform (7-15") engineered for precision kinetic intercept and heavy payload strike.',
                                     imgClass: 'product-image-hydra',
                                     link: '/products/stinger'
                                 },
@@ -156,8 +156,8 @@ export default function Mas() {
                                     name: 'AOT (7 Inch)',
                                     nickname: 'TRAINER',
                                     type: 'PILOT TRAINING',
-                                    tagline: 'QUADCOPTER TRAINER',
-                                    desc: 'Shatter-resistant trainer with integrated prop guards and zero-latency feedback for new pilots.',
+                                    tagline: 'ATTRITABLE TRAINER SYSTEM',
+                                    desc: 'Shatter-resistant aerial training system with integrated guards and zero-latency hardware feedback.',
                                     imgClass: 'product-image-aot',
                                     link: '/products/aot'
                                 }

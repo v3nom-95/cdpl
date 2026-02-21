@@ -75,7 +75,7 @@ export default function Products() {
             title: "Aerial Observation Trainer",
             type: "TRAINER",
             tagline: "SURVEILLANCE & TRAINING",
-            description: "Made-in-India rugged drone for surveillance and pilot training, with strong follow-on orders after initial Indian Army success.",
+            description: "Attritable aircraft for surveillance and pilot training, leveraging edge computing modules for seamless tactical integration.",
             stats: [
                 { val: "HD", label: "Video" },
                 { val: "45 Min", label: "Endurance" },
@@ -86,10 +86,10 @@ export default function Products() {
         },
         {
             id: "bard",
-            title: "Battlefield Artillery Recon Drone",
+            title: "Battlefield Aerial Reconnaissance Device",
             type: "RECON",
             tagline: "TACTICAL AUTONOMY",
-            description: "A tactical, autonomous drone built for real-time surveillance, target acquisition, and post-strike damage assessment.",
+            description: "A Group 2 UAS built for real-time surveillance, target acquisition, and establishing a robust AI-enabled kill chain.",
             stats: [
                 { val: "100km", label: "Op Range" },
                 { val: "AI", label: "Vision Core" },
@@ -100,10 +100,10 @@ export default function Products() {
         },
         {
             id: "tdfs",
-            title: "Tactical Drone Flying Simulator",
+            title: "UAS Tactical Flight Simulator",
             type: "SIMULATOR",
             tagline: "WAR-GAMING",
-            description: "A hyper-realistic drone piloting and war-gaming simulator featuring onboard compute and high-resolution immersive visuals.",
+            description: "A hyper-realistic UAS piloting and air defense training simulator featuring Sensor Fusion and high-resolution immersive visuals.",
             stats: [
                 { val: "4K", label: "Res" },
                 { val: "0ms", label: "Lag" },

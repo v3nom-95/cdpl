@@ -30,19 +30,19 @@ export default function AboutPage() {
             name: "Major Aerospace Systems",
             id: "MAS",
             logo: "/partners/masicon.png",
-            desc: "Advanced aerial autonomous platforms and ISR solutions."
+            desc: "Software-defined warfare, Group 1/2/3 UAS, and kinetic interceptors."
         },
         {
             name: "Major Ground Systems",
             id: "MGS",
             logo: "/partners/mgsicon.png",
-            desc: "Autonomous unmanned ground vehicles and tactical systems."
+            desc: "Unmanned Ground Vehicles (UGVs), Robotic Combat Vehicles (RCVs), and C-UAS."
         },
         {
             name: "Major Marine Systems",
             id: "MMS",
             logo: "/partners/mmsicon.png",
-            desc: "Surface and sub-surface maritime autonomy and mission systems."
+            desc: "Unmanned Surface Vehicles (USVs), Autonomous Submarines, and seabed warfare."
         }
     ];
 
@@ -103,7 +103,7 @@ export default function AboutPage() {
 
                     <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', color: 'var(--text-secondary)', maxWidth: '850px', lineHeight: '1.4' }}>
                         <IndiaFlag />
-                        India’s first <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>Physical Intelligence</span> company. We build autonomous AI systems that perceive, reason, and act in the physical world to protect India and empower tactical operations across all domains.
+                        India’s first <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>Physical Intelligence</span> company. We build Zero-Trust open architecture defense software and AI systems that leverage Sensor Fusion to perceive, reason, and act—powering Multi-Domain Command and Control (MDC2) across all environments.
                     </p>
                 </div>
             </section>
@@ -114,11 +114,11 @@ export default function AboutPage() {
                     <div className="vision-mission-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)' }}>
                         <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>VISION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through Edge AI defense and algorithmic warfare.</p>
                         </div>
                         <div style={{ borderLeft: '4px solid var(--accent-secondary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>MISSION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy intelligent autonomous systems for defense and dual-use applications, protecting soldiers and establishing India's global leadership in Physical Intelligence.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy AI-enabled kill chains for defense and dual-use applications, protecting soldiers and establishing India's global leadership in Physical Intelligence.</p>
                         </div>
                     </div>
                 </div>

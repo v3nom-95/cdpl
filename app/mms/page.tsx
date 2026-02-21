@@ -81,8 +81,8 @@ export default function Mms() {
                         letterSpacing: '0.5px',
                         marginBottom: '3rem'
                     }}>
-                        Surface and sub-surface maritime autonomy platforms<br />
-                        are currently in active development.<br />
+                        Extra Large Unmanned Undersea Vehicles (XLUUV) and Mine Countermeasures (MCM) USVs<br />
+                        are currently in active development for distributed maritime operations.<br />
                         Naval deployment timeline classified.
                     </p>
 

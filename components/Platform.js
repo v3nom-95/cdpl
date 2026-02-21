@@ -9,10 +9,10 @@ export default function Platform() {
                     <div className="about-text">
                         <h4>TACTICAL EDGE INTELLIGENCE</h4>
                         <p>
-                            MAS redefines battlefield awareness by integrating <strong>advanced sensor suites</strong> with standard-setting autonomous navigation. Our platforms are designed for the modern operational environment—high-stress, GPS-denied, and mission-critical.
+                            MAS redefines battlefield awareness by integrating <strong>Sensor Fusion</strong> with standard-setting open architecture defense software. Our platforms are designed for the modern operational environment—high-stress, GPS-denied, and demanding zero-trust architecture.
                         </p>
                         <p>
-                            From <strong>specialized pilot training drones</strong> to <strong>real-time reconnaissance systems</strong>, our technology provides a common operational picture—enabling seamless interoperability and decisive action.
+                            From <strong>specialized Attritable Trainer Systems</strong> to <strong>real-time Group 2 UAS</strong>, our technology provides a common operational picture—enabling seamless interoperability and decisive algorithmic warfare.
                         </p>
                         <div className="platform-features">
                             <div className="feat-item">Modular Sensors</div>
