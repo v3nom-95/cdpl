@@ -274,7 +274,7 @@ export default function ProductPage() {
                     </div>
                 </section>
 
-                {/* Tactical Capabilities Matrix */}
+                {/* Tactical Capabilities Matrix
                 <section className="reveal-section" style={{ background: '#fff', padding: 'clamp(4rem, 8vh, 10rem) 0', borderTop: '1px solid #eee' }}>
                     <div className="container">
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(3rem, 6vw, 8rem)' }}>
@@ -294,7 +294,7 @@ export default function ProductPage() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 <Footer />
 
@@ -532,7 +532,7 @@ export default function ProductPage() {
                 </section>
             )}
 
-            {/* Sub-system Analysis Section */}
+            {/* Sub-system Analysis Section
             <section className="about-section reveal-section" style={{ background: '#f8fafc' }}>
                 <div className="container">
                     <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>SUB-SYSTEM ANALYSIS</h2>
@@ -548,7 +548,7 @@ export default function ProductPage() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <Footer />
         </div>

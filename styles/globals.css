@@ -1554,7 +1554,7 @@ a:hover {
   border-bottom: 1px solid var(--border-color);
 }
 
-.spec-hero::after {
+/* .spec-hero::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -1563,7 +1563,7 @@ a:hover {
   height: 50%;
   background: linear-gradient(to top, var(--bg-tactical) 0%, transparent 100%);
   z-index: 1;
-}
+} */
 
 .tech-stats-grid {
   display: grid;
@@ -1674,12 +1674,12 @@ a:hover {
   line-height: 1.6;
 }
 
-.blueprint-bg {
+/* .blueprint-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+    linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0)),
     radial-gradient(circle at 2px 2px, var(--border-color) 1px, transparent 0);
   background-size: 100% 100%, 40px 40px;
-}
+} */
 
 /* Futuristic Gallery Styles */
 .product-gallery-section {
@@ -1899,7 +1899,7 @@ a:hover {
   position: relative;
 }
 
-.blueprint-bg::after {
+/* .blueprint-bg::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1908,7 +1908,7 @@ a:hover {
   height: 100%;
   background: radial-gradient(circle at 50% 50%, transparent, rgba(255, 255, 255, 0.8));
   pointer-events: none;
-}
+} */
 
 /* Anduril-Inspired Design System */
 :root {

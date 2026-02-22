@@ -88,8 +88,8 @@ export const products = {
             }
         ],
         variants: [
-            { variant: "Day", type: "VTOL Fixed Wing", endurance: "~40m", range: "5km", altitude: "700m", agl: "300m", frame: "1200mm", auw: "3.5kg", payload: "EO", camera: "EO 3-axis", feature: "Training/ISR" },
-            { variant: "Day/Night", type: "VTOL Fixed Wing", endurance: "~40m", range: "5km", altitude: "700m", agl: "300m", frame: "1200mm", auw: "3.5kg", payload: "EO/IR", camera: "EO/IR 3-axis", feature: "Day Night ISR" }
+            { variant: "Day", type: "VTOL Fixed Wing ISR", endurance: "~40", range: "5", altitude: "700", agl: "300", frame: "1200mm", auw: "3.5", payload: "EO", camera: "EO 3-axis", feature: "Training/ISR" },
+            { variant: "Day/Night", type: "VTOL Fixed Wing ISR", endurance: "~40", range: "5", altitude: "700", agl: "300", frame: "1200mm", auw: "3.5", payload: "EO/IR", camera: "EO/IR 3-axis", feature: "Day Night ISR" }
         ],
         specs: [
             { label: "Wingspan", value: "1200mm" },
@@ -105,7 +105,10 @@ export const products = {
             "BVLOS Ready"
         ],
         imageClass: "product-image-aot",
-        nickname: "OBSERVER"
+        nickname: "OBSERVER",
+        galleryImages: [
+            "/partners/horizonvtol.png"
+        ]
     },
     'horizon-fpv': {
         name: "HORIZON FPV",
@@ -135,7 +138,7 @@ export const products = {
             }
         ],
         variants: [
-            { variant: "FPV", type: "Fixed Wing Trainer", endurance: "~35m", range: "6km", altitude: "700m", agl: "300m", frame: "1645mm", auw: "3.5kg", payload: "0.5kg", camera: "FPV Camera", feature: "Trainer" }
+            { variant: "FPV", type: "Fixed Wing Trainer", endurance: "~35", range: "6", altitude: "700", agl: "300", frame: "1645mm", auw: "3.5", payload: "0.5kg", camera: "FPV Camera", feature: "Trainer" }
         ],
         specs: [
             { label: "Wingspan", value: "1645mm" },
@@ -151,7 +154,12 @@ export const products = {
             "Precision Control Surface"
         ],
         imageClass: "product-image-sim",
-        nickname: "SIMULATE"
+        nickname: "SIMULATE",
+        galleryImages: [
+            "/partners/placeholder1.jpg",
+            "/partners/placeholder2.jpg",
+            "/partners/placeholder3.jpg"
+        ]
     },
     'stinger': {
         name: "STINGER",
@@ -181,9 +189,9 @@ export const products = {
             }
         ],
         variants: [
-            { variant: "7 Inch Day", type: "FPV Quad", endurance: "~22m", range: "2km", altitude: "800m", agl: "400m", frame: "7 Inch", auw: "1.6kg", payload: "1kg", camera: "2K FPV", feature: "Trainer FPV" },
-            { variant: "10 Inch Day/Night", type: "FPV Quad", endurance: "~35m", range: "4km", altitude: "800m", agl: "400m", frame: "10 Inch", auw: "2.4kg", payload: "1kg", camera: "EO+Thermal", feature: "Tactical FPV" },
-            { variant: "15 Inch Day/Night", type: "FPV Quad", endurance: "~40m", range: "5km", altitude: "800m", agl: "400m", frame: "15 Inch", auw: "4.2kg", payload: "2kg", camera: "EO+Thermal", feature: "Heavy Lift FPV" }
+            { variant: "7 Inch Day", type: "FPV Quad Kamikaze", endurance: "~22", range: "2", altitude: "800", agl: "400", frame: "7 Inch", auw: "1.6", payload: "1kg", camera: "2K FPV", feature: "Trainer FPV" },
+            { variant: "10 Inch Day/Night", type: "FPV Quad Kamikaze", endurance: "~35", range: "4", altitude: "800", agl: "400", frame: "10 Inch", auw: "2.4", payload: "1kg", camera: "EO+Thermal", feature: "Tactical FPV" },
+            { variant: "15 Inch Day/Night", type: "FPV Quad Kamikaze", endurance: "~40", range: "5", altitude: "800", agl: "400", frame: "15 Inch", auw: "4.2", payload: "2kg", camera: "EO+Thermal", feature: "Heavy Lift FPV" }
         ],
         specs: [
             { label: "Frame Sizes", value: "7 / 10 / 15 Inch" },
@@ -198,7 +206,13 @@ export const products = {
             "Low Profile Design",
             "Extreme Agility"
         ],
-        imageClass: "product-image-hydra"
+        imageClass: "product-image-hydra",
+        nickname: "HYDRA V4",
+        galleryImages: [
+            "/partners/placeholder1.jpg",
+            "/partners/placeholder2.jpg",
+            "/partners/placeholder3.jpg"
+        ]
     },
     'aot': {
         name: "Attritable Observation Trainer (AOT)",
@@ -228,7 +242,7 @@ export const products = {
             }
         ],
         variants: [
-            { variant: "7 Inch Trainer", type: "Quadcopter", endurance: "~30m", range: "3km", altitude: "600m", agl: "300m", frame: "7 Inch", auw: "2kg", payload: "0.2kg", camera: "Analog FPV", feature: "Prop Guard Trainer" }
+            { variant: "7 Inch Trainer", type: "Quadcopter Trainer", endurance: "~30", range: "3", altitude: "600", agl: "300", frame: "7 Inch", auw: "2", payload: "0.2kg", camera: "Analog FPV", feature: "Prop Guard Trainer" }
         ],
         specs: [
             { label: "Frame Size", value: "7 Inch" },
@@ -243,6 +257,10 @@ export const products = {
             "Modular Arm System",
             "Quick-Swap Battery"
         ],
-        imageClass: "product-image-aot"
+        imageClass: "product-image-aot",
+        nickname: "TRAINER",
+        galleryImages: [
+            "/partners/aot.png"
+        ]
     }
 };
