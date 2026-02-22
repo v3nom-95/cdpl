@@ -34,7 +34,7 @@ export default function AboutPage() {
 
     const leadership = [
         {
-            name: "Major Rama Sundeep Naishadham (Retd)",
+            name: "Major Sundeep (Retd.)",
             role: "Founder & CEO",
             details: "12+ Years operating Autonomous Systems | Alumni of IIT J & IIM A",
             bio: "Veteran-led insight. We understand what soldiers need because we have been in their boots.",
