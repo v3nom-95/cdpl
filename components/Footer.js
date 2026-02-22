@@ -25,11 +25,11 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="footer-section">
-                    <h3>Engagement</h3>
+                    <h3>Contact Us</h3>
                     <ul>
-                        <li><a href="tel:+918919294946">+91 89192 94946</a></li>
-                        <li><a href="mailto:info@major-aerospace.com">info@major-aerospace.com</a></li>
-                        <li>Hyderabad, Telangana, India</li>
+                        <li><a href="tel:+91 9494949698">+91 9494949698</a></li>
+                        <li><a href="mailto:info@cdpl.ai">info@cdpl.ai</a></li>
+                        <li></li>
                     </ul>
                 </div>
                 <div className="footer-section">

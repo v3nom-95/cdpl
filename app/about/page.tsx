@@ -4,20 +4,6 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { useState, useEffect } from 'react';
 
-const IndiaFlag = () => (
-    <svg width="28" height="20" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px', borderRadius: '3px', transform: 'translateY(-2px)' }}>
-        <path fill="#FF9933" d="M0 0h900v200H0z" />
-        <path fill="#FFFFFF" d="M0 200h900v200H0z" />
-        <path fill="#138808" d="M0 400h900v200H0z" />
-        <circle cx="450" cy="300" r="80" fill="#000080" />
-        <circle cx="450" cy="300" r="60" fill="#FFFFFF" />
-        <circle cx="450" cy="300" r="12" fill="#000080" />
-        {[...Array(24)].map((_, i) => (
-            <line key={i} x1="450" y1="300" x2="450" y2="220" stroke="#000080" strokeWidth="10" transform={`rotate(${i * 15} 450 300)`} />
-        ))}
-    </svg>
-);
-
 export default function AboutPage() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -56,33 +42,39 @@ export default function AboutPage() {
         },
         {
             name: "Naveen Kanakadandi",
-            role: "CFO & Co-CEO",
+            role: "Co-Founder, MD & CFO",
             details: "18+ years steering strategy and tech execution | ex-Amazon, Google",
             bio: "Drives financial strategy and operational scaling for global growth.",
             image: "/partners/nav.jpeg"
         },
         {
             name: "Vishal Kumar Singh",
-            role: "CTO",
+            role: "Co-Founder & CTO",
             details: "6+ Years of Product development and Engineering experience",
             bio: "Leads autonomy platform and AI system architecture.",
             image: "/partners/vish.png"
         },
         {
             name: "Major Rajesh Yangaladasu (Retd)",
-            role: "VP, Business Development",
+            role: "VP, Business Development & Sales",
             details: "Military veteran | Tactical Instructor | Defense Strategist | Alumni of IIM Lucknow",
             bio: "Strategic mind behind elite defense partnerships.",
             image: null
         },
         {
             name: "Anurag Madedhi",
-            role: "Head, Manufacturing",
+            role: "Co-Founder, Head of Procurement & Vendor Strategy",
             details: "Masters in Material Science & Manufacturing | Biotechnology ex-COO",
             bio: "Leads production excellence and hardware precision.",
             image: null
         },
-
+        {
+            name: "Srikanth Dhuta",
+            role: "Legal Advisor",
+            details: "Legal structuring & IP strategy",
+            bio: "Ensures compliance and protects sovereign technology assets.",
+            image: null
+        }
     ];
 
     return (
@@ -101,10 +93,7 @@ export default function AboutPage() {
                         CHAKRAVYUHA <span style={{ color: 'var(--accent-primary)' }}>DYNAMICS</span>
                     </h1>
 
-                    <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', color: 'var(--text-secondary)', maxWidth: '850px', lineHeight: '1.4' }}>
-                        <IndiaFlag />
-                        India’s first <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>Physical Intelligence</span> company. We build Zero-Trust open architecture defense software and AI systems that leverage Sensor Fusion to perceive, reason, and act—powering Multi-Domain Command and Control (MDC2) across all environments.
-                    </p>
+
                 </div>
             </section>
 
@@ -114,11 +103,11 @@ export default function AboutPage() {
                     <div className="vision-mission-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)' }}>
                         <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>VISION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through Edge AI defense and algorithmic warfare.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
                         </div>
                         <div style={{ borderLeft: '4px solid var(--accent-secondary)', paddingLeft: '1.5rem' }}>
                             <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>MISSION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy AI-enabled kill chains for defense and dual-use applications, protecting soldiers and establishing India's global leadership in Physical Intelligence.</p>
+                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy intelligent autonomous systems for defense and dual-use applications & protecting soldiers, empowering industries, and establishing India's leadership in Physical Intelligence.</p>
                         </div>
                     </div>
                 </div>
@@ -128,8 +117,7 @@ export default function AboutPage() {
             <section style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#fff' }}>
                 <div className="container">
                     <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
-                        <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontWeight: '800' }}>[ CORE_DIVISIONS ]</span>
-                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem' }}>Sovereign Autonomy Ecosystem</h2>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem', color: 'var(--text-primary)' }}>Core Divisions</h2>
                     </div>
 
                     <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
@@ -153,8 +141,7 @@ export default function AboutPage() {
             <section id="leadership" style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9' }}>
                 <div className="container">
                     <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
-                        <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontWeight: '800' }}>[ LEADERSHIP ]</span>
-                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem' }}>Veteran-Led. Physics-Driven.</h2>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem', color: 'var(--text-primary)' }}>Leadership</h2>
                     </div>
 
                     <div className="products-grid leadership-grid">
@@ -162,7 +149,7 @@ export default function AboutPage() {
                             <div key={index} className="product-card" style={{ padding: '2.5rem', minHeight: 'auto', background: '#fff' }}>
                                 <span className="corner corner-tl"></span>
                                 <span className="corner corner-br"></span>
-                                <div className="product-image" style={{
+                                {/* <div className="product-image" style={{
                                     height: '260px',
                                     marginBottom: '2.5rem',
                                     position: 'relative',
@@ -178,14 +165,14 @@ export default function AboutPage() {
                                             <span style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', fontWeight: '800' }}>PORTRAIT_OFFLINE</span>
                                         </div>
                                     )}
-                                </div>
+                                </div> */}
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>{leader.role.toUpperCase()}</span>
-                                    <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)' }}>{leader.name}</h3>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', lineHeight: '1.4', marginBottom: '1.5rem' }}>{leader.details}</p>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{leader.name}</h3>
+                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800', lineHeight: '1.2', fontSize: '0.80rem', fontFamily: 'var(--font-mono)' }}>{leader.role.toUpperCase()}</span>
+                                    {/* <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', lineHeight: '1.4', marginBottom: '1.5rem' }}>{leader.details}</p>
                                     <p style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--text-primary)', borderLeft: '2px solid var(--accent-primary)', paddingLeft: '1rem' }}>
                                         "{leader.bio}"
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         ))}

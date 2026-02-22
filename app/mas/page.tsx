@@ -89,11 +89,11 @@ export default function Mas() {
                                 <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center' }}>
                                     <img src="/partners/d1.png" alt="Indian Army" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                                 </div>
-                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
-                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem' }}>PARTNER_02</div>
+                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center' }}>
+                                    <img src="/partners/gunners.jpg" alt="Gunners" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                                 </div>
-                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center', opacity: 0.2 }}>
-                                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem' }}>PARTNER_03</div>
+                                <div className="partner-logo-item" style={{ width: 'clamp(100px, 15vw, 140px)', display: 'flex', justifyContent: 'center' }}>
+                                    <img src="/partners/navy.png" alt="Indian Navy" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                                 </div>
                             </div>
                         </div>

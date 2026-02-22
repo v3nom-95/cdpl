@@ -3,7 +3,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import ProductCategories from '../components/ProductCategories';
-import Resources from '../components/Resources';
+// import Resources from '../components/Resources';
 import Footer from '../components/Footer';
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
             <Navbar />
             <Hero />
             <ProductCategories />
-            <Resources />
+            {/* <Resources /> */}
             <Footer />
         </>
     );
