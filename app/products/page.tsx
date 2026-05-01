@@ -178,24 +178,7 @@ export default function ProductsPage() {
                                         </div>
 
                                         <div className="product-content" style={{ padding: '2rem' }}>
-                                            <span style={{ 
-                                                display: 'block', 
-                                                fontFamily: 'var(--font-mono)', 
-                                                fontSize: '0.7rem', 
-                                                color: 'var(--accent-primary)', 
-                                                marginBottom: '0.5rem',
-                                                letterSpacing: '2px'
-                                            }}>{product.tagline}</span>
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{product.name}</h3>
-                                            <p style={{ 
-                                                color: 'var(--text-secondary)', 
-                                                fontSize: '0.9rem', 
-                                                marginBottom: '2rem',
-                                                lineHeight: '1.6',
-                                                minHeight: '3em'
-                                            }}>
-                                                {product.description}
-                                            </p>
                                             
                                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
                                                 {product.heroSpecs?.slice(0, 2).map((spec, i) => (
@@ -216,7 +199,7 @@ export default function ProductsPage() {
                                                 textTransform: 'uppercase',
                                                 letterSpacing: '1px'
                                             }}>
-                                                EXPLORE SYSTEM <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
+                                                EXPLORE PRODUCT <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
                                             </Link>
                                         </div>
                                     </div>

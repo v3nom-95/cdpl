@@ -123,7 +123,7 @@ export default function Mas() {
                                 },
                                 {
                                     id: 'bard',
-                                    name: 'BARD Family',
+                                    name: 'BARD',
                                     nickname: 'SENTINEL',
                                     type: 'GROUP 2 UAS',
                                     tagline: 'TACTICAL ISR PLATFORM',
@@ -153,7 +153,7 @@ export default function Mas() {
                                 },
                                 {
                                     id: 'stinger',
-                                    name: 'STINGER Family',
+                                    name: 'STINGER',
                                     nickname: 'STRIKE',
                                     type: 'KINETIC INTERCEPT',
                                     tagline: 'LOITERING MUNITION',
@@ -163,7 +163,7 @@ export default function Mas() {
                                 },
                                 {
                                     id: 'aot',
-                                    name: 'AOT (7 Inch)',
+                                    name: 'AOT',
                                     nickname: 'CADET',
                                     type: 'PILOT TRAINING',
                                     tagline: 'ATTRITABLE TRAINER SYSTEM',
@@ -203,9 +203,7 @@ export default function Mas() {
                                             />
                                         </div>
                                         <div className="product-content">
-                                            <span className="product-tagline">{product.tagline}</span>
                                             <h3>{product.name}</h3>
-                                            <p>{product.desc}</p>
                                             <Link href={product.link} className="btn-text">View Specifications &rarr;</Link>
                                         </div>
                                     </div>

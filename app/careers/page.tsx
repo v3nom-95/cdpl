@@ -227,7 +227,7 @@ export default function CareersPage() {
                                     padding: 'clamp(2rem, 4vw, 3rem)',
                                     borderRight: i < 3 ? '1px solid var(--border-color)' : 'none',
                                     cursor: 'pointer',
-                                    background: activePillar === i ? '#000' : '#fff',
+                                    background: activePillar === i ? 'var(--accent-primary)' : '#fff',
                                     transition: 'background 0.5s ease',
                                     position: 'relative',
                                     overflow: 'hidden',
@@ -238,7 +238,7 @@ export default function CareersPage() {
                                     position: 'absolute', top: 0, left: 0,
                                     width: activePillar === i ? '100%' : '0%',
                                     height: '3px',
-                                    background: 'var(--accent-primary)',
+                                    background: activePillar === i ? '#fff' : 'var(--accent-primary)',
                                     transition: 'width 3s linear',
                                 }} />
                                 <div style={{

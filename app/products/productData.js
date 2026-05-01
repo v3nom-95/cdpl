@@ -1,10 +1,86 @@
-export const products = {
+﻿export const products = {
+    'raven': {
+        name: "RAVEN",
+        tagline: "UAV SIMULATOR · TRAINER SERIES",
+        brand: "MAS",
+        category: "SIMULATOR",
+        description: "Plug-and-play UAV simulation system for structured multi-platform drone training.",
+        longDescription: "RAVEN is a plug-and-play UAV simulation system designed for structured multi-platform drone training. The system supports FPV, rotary, and fixed-wing mission environments with realistic terrain rendering and physics-based simulation, enabling risk-free mastery of complex aerial maneuvers.",
+        heroSpecs: [
+            { label: "Display", value: "27\" Curved" },
+            { label: "Computing", value: "14th Gen i5" },
+            { label: "Graphics", value: "RTX 3050" },
+            { label: "System", value: "Plug-and-Play" }
+        ],
+        performanceMetrics: [
+            { label: "PHYSICS_ACCURACY", value: 98, unit: "%" },
+            { label: "LATENCY", value: 2, unit: "ms" },
+            { label: "RENDER_QUALITY", value: 95, unit: "%" },
+            { label: "TRAINING_ROI", value: 100, unit: "%" }
+        ],
+        featureCards: [
+            {
+                title: "Immersive Visuals",
+                description: "27-inch Curved High-Refresh Display for tactical environmental awareness and depth perception."
+            },
+            {
+                title: "High-Core Performance",
+                description: "Powered by 14th Gen Intel i5 and NVIDIA RTX 3050 for lag-free, high-fidelity physics."
+            },
+            {
+                title: "Complete Training Kit",
+                description: "Integrated FPV goggles, radio transmitter, and built-in UPS backup for uninterrupted sessions."
+            }
+        ],
+        variants: [
+            { 
+                id: "raven-trainer",
+                variant: "RAVEN Simulator System", 
+                type: "Professional UAV Trainer", 
+                description: "The complete simulation solution for modern UAV operators.",
+                keyHighlights: [
+                    "27-inch Curved High-Refresh Display",
+                    "Intel i5 (14th Gen) Performance Core",
+                    "NVIDIA RTX 3050 (8GB Graphics)",
+                    "16GB RAM | 1TB SSD",
+                    "Integrated FPV Goggles & Radio Transmitter",
+                    "Built-in UPS Backup",
+                    "Pre-Loaded Licensed Simulation Software"
+                ],
+                capabilities: ["Multi-Platform Sim", "FPV Mastery", "Mission Planning"],
+                applications: ["New Pilot Training", "Mission Profile Testing", "Advanced Acro Drills"],
+                performance: { },
+                gallery: ["/partners/r1.png", "/partners/r2.jpeg", "/partners/r3.jpeg"]
+            }
+        ],
+        specs: [
+            { label: "Display", value: "27\" Curved Refresh" },
+            { label: "Controller", value: "Integrated Radio" },
+            { label: "Backup", value: "Built-in UPS" },
+            { label: "Software", value: "Multi-UAV Licensed" }
+        ],
+        features: [
+            "Realistic Physics Engine",
+            "Support for FPV/Fixed/Rotary",
+            "High-Fidelity Terrain Rendering",
+            "Plug-and-Play Setup",
+            "Comprehensive Mission Log"
+        ],
+        imageClass: "product-image-sim",
+        nickname: "MAESTRO",
+        galleryImages: [
+            "/partners/r1.png",
+            "/partners/r2.jpeg",
+            "/partners/r3.jpeg"
+        ],
+        whatsappNumber: "919494949698"
+    },
     'bard': {
-        name: "B.A.R.D. V2.0",
+        name: "B.A.R.D.",
         tagline: "GROUP 2 UAS · TACTICAL AUTONOMY",
         brand: "MAS",
         category: "ISR",
-        description: "BARD V2.0 is a compact autonomous quadcopter designed for surveillance, perimeter monitoring, and reconnaissance operations. The platform integrates stabilized electrooptical imaging with real-time transmission capability.",
+        description: "Autonomous quadcopter for day/night surveillance, ISR, and precision reconnaissance with multi-payload support.",
         longDescription: "BARD V2.0 is a mission-critical Autonomous Aerial System engineered for persistent battlefield intelligence. The platform supports multiple variants ranging from standard day surveillance to advanced thermal imaging with Laser Range Finding (LRF) and specialized payload release capabilities.",
         heroSpecs: [
             { label: "Endurance", value: "60m" },
@@ -169,11 +245,11 @@ export const products = {
         whatsappNumber: "919494949698"
     },
     'horizon-vtol': {
-        name: "HORIZON 120 – VTOL",
+        name: "HORIZON – VTOL",
         tagline: "FIXED WING VTOL · TRAINER & ISR",
         brand: "MAS",
         category: "ISR",
-        description: "VTOL Fixed-Wing platform combining vertical takeoff with efficient cruise for extended reconnaissance.",
+        description: "VTOL fixed-wing platform combining vertical takeoff with efficient cruise for extended reconnaissance.",
         longDescription: "HORIZON 120 VTOL combines vertical takeoff capability with efficient fixed-wing cruise performance. Designed for training and ISR applications, the platform supports autonomous waypoint navigation and stabilized observation. It is the premier choice for long-endurance missions without the need for runways.",
         heroSpecs: [
             { label: "Endurance", value: "40m" },
@@ -214,7 +290,7 @@ export const products = {
                     "3-Axis Stabilized Day EO Gimbal",
                     "Wingspan: 1200 mm",
                     "Lightweight Composite Airframe",
-                    "Portable Ground Control Station (7” Display)"
+                    "Portable Ground Control Station (7-inch Display)"
                 ],
                 capabilities: ["Vertical Takeoff", "Fixed-Wing Cruise", "Autonomous Navigation"],
                 applications: ["Daytime ISR", "UAV Pilot Training", "Perimeter Surveillance"],
@@ -262,11 +338,11 @@ export const products = {
         whatsappNumber: "919494949698"
     },
     'horizon-fpv': {
-        name: "HORIZON 160 FPV",
+        name: "HORIZON FPV",
         tagline: "FIXED WING TRAINER · FPV SERIES",
         brand: "MAS",
         category: "TRAINER",
-        description: "Hand-launched delta-wing trainer for realistic UAV flight and FPV mission familiarization.",
+        description: "Hand-launched delta-wing fixed-wing trainer for FPV pilot skill development and mission familiarization.",
         longDescription: "Horizon 160 FPV is a lightweight delta-wing fixed-wing trainer designed for realistic UAV flight training and FPV mission familiarization. The hand-launch configuration enables rapid deployment without runway dependency, supporting operator skill development in navigation, recovery, and mission execution.",
         heroSpecs: [
             { label: "Endurance", value: "45m" },
@@ -338,11 +414,11 @@ export const products = {
         whatsappNumber: "919494949698"
     },
     'stinger': {
-        name: "STINGER SERIES",
+        name: "STINGER",
         tagline: "TACTICAL TRAINER · FPV PLATFORM",
         brand: "MAS",
         category: "TACTICAL",
-        description: "High-agility FPV tactical training platforms optimized for speed, precision, and mission rehearsal.",
+        description: "High-agility FPV tactical platforms engineered for speed, precision intercept, and mission rehearsal.",
         longDescription: "The STINGER family represents the peak of FPV tactical training systems. Engineered for high-speed maneuvering and precision control, these platforms allow pilots to rehearse complex mission profiles in a cost-effective, high-performance architecture ranging from 7 to 15 inches.",
         heroSpecs: [
             { label: "Max Endurance", value: "35m" },
@@ -373,11 +449,11 @@ export const products = {
         variants: [
             { 
                 id: "stinger-7",
-                variant: "STINGER 7” – Day Variant", 
+                variant: "STINGER 7-inch – Day Variant", 
                 type: "Compact FPV Tactical Trainer", 
                 description: "High-agility platform for precision maneuver drills and reflex-based pilot development.",
                 keyHighlights: [
-                    "7” Frame Configuration",
+                    "7-inch Frame Configuration",
                     "Endurance: Up to 20–22 Minutes",
                     "Operational Range: Up to 1–2 KM",
                     "Top Speed: 22–24 m/s",
@@ -394,11 +470,11 @@ export const products = {
             },
             { 
                 id: "stinger-10",
-                variant: "STINGER 10” – Day/Night Variant", 
+                variant: "STINGER 10-inch – Day/Night Variant", 
                 type: "Extended-Endurance FPV Platform", 
                 description: "Designed for advanced FPV training and extended-range tactical simulations.",
                 keyHighlights: [
-                    "10” Frame Configuration",
+                    "10-inch Frame Configuration",
                     "Endurance: Up to 25–30 Minutes",
                     "Operational Range: Up to 3–4 KM",
                     "HD Day + Thermal Imaging",
@@ -415,11 +491,11 @@ export const products = {
             },
             { 
                 id: "stinger-15",
-                variant: "STINGER 15” – Day/Night Gimbal Variant", 
+                variant: "STINGER 15-inch – Day/Night Gimbal Variant", 
                 type: "Heavy-Lift FPV Tactical Platform", 
                 description: "High-endurance platform engineered for advanced operational training and heavier payload integration.",
                 keyHighlights: [
-                    "15” Reinforced Frame",
+                    "15-inch Reinforced Frame",
                     "Endurance: Up to 30–35 Minutes",
                     "Operational Range: Up to 4–5 KM",
                     "HD Day + Thermal Imaging",
@@ -460,7 +536,7 @@ export const products = {
         brand: "MAS",
         category: "TRAINER",
         description: "Compact quadcopter with integrated propeller guards for safe indoor and confined-area pilot training.",
-        longDescription: "AOT (Air Observer Trainer) is a compact 7” quadcopter designed for structured FPV pilot training and close-proximity maneuver drills. The integrated propeller guard system enhances safety during indoor and confined-area operations, making it ideal for foundational and intermediate-level operator development.",
+        longDescription: "AOT (Air Observer Trainer) is a compact 7-inch quadcopter designed for structured FPV pilot training and close-proximity maneuver drills. The integrated propeller guard system enhances safety during indoor and confined-area operations, making it ideal for foundational and intermediate-level operator development.",
         heroSpecs: [
             { label: "Endurance", value: "30m" },
             { label: "Range", value: "2km" },
@@ -490,11 +566,11 @@ export const products = {
         variants: [
             { 
                 id: "aot-7",
-                variant: "A.O.T. 7” Variant", 
+                variant: "A.O.T. 7-inch Variant", 
                 type: "Prop-Guarded Trainer", 
-                description: "7” quadcopter designed for close-proximity maneuver training.",
+                description: "7-inch quadcopter designed for close-proximity maneuver training.",
                 keyHighlights: [
-                    "7” Rugged Frame with Prop Guard",
+                    "7-inch Rugged Frame with Prop Guard",
                     "Endurance: Up to 30 Minutes",
                     "Operational Range: Up to 1–2 KM",
                     "Cruise Speed: 10–12 m/s",
@@ -526,82 +602,6 @@ export const products = {
         nickname: "CADET",
         galleryImages: [
             "/partners/aot.png"
-        ],
-        whatsappNumber: "919494949698"
-    },
-    'raven': {
-        name: "RAVEN UAV Simulator",
-        tagline: "UAV SIMULATOR · TRAINER SERIES",
-        brand: "MAS",
-        category: "SIMULATOR",
-        description: "Plug-and-play UAV simulation system for structured multi-platform drone training.",
-        longDescription: "RAVEN is a plug-and-play UAV simulation system designed for structured multi-platform drone training. The system supports FPV, rotary, and fixed-wing mission environments with realistic terrain rendering and physics-based simulation, enabling risk-free mastery of complex aerial maneuvers.",
-        heroSpecs: [
-            { label: "Display", value: "27\" Curved" },
-            { label: "Computing", value: "14th Gen i5" },
-            { label: "Graphics", value: "RTX 3050" },
-            { label: "System", value: "Plug-and-Play" }
-        ],
-        performanceMetrics: [
-            { label: "PHYSICS_ACCURACY", value: 98, unit: "%" },
-            { label: "LATENCY", value: 2, unit: "ms" },
-            { label: "RENDER_QUALITY", value: 95, unit: "%" },
-            { label: "TRAINING_ROI", value: 100, unit: "%" }
-        ],
-        featureCards: [
-            {
-                title: "Immersive Visuals",
-                description: "27” Curved High-Refresh Display for tactical environmental awareness and depth perception."
-            },
-            {
-                title: "High-Core Performance",
-                description: "Powered by 14th Gen Intel i5 and NVIDIA RTX 3050 for lag-free, high-fidelity physics."
-            },
-            {
-                title: "Complete Training Kit",
-                description: "Integrated FPV goggles, radio transmitter, and built-in UPS backup for uninterrupted sessions."
-            }
-        ],
-        variants: [
-            { 
-                id: "raven-trainer",
-                variant: "RAVEN Simulator System", 
-                type: "Professional UAV Trainer", 
-                description: "The complete simulation solution for modern UAV operators.",
-                keyHighlights: [
-                    "27” Curved High-Refresh Display",
-                    "Intel i5 (14th Gen) Performance Core",
-                    "NVIDIA RTX 3050 (8GB Graphics)",
-                    "16GB RAM | 1TB SSD",
-                    "Integrated FPV Goggles & Radio Transmitter",
-                    "Built-in UPS Backup",
-                    "Pre-Loaded Licensed Simulation Software"
-                ],
-                capabilities: ["Multi-Platform Sim", "FPV Mastery", "Mission Planning"],
-                applications: ["New Pilot Training", "Mission Profile Testing", "Advanced Acro Drills"],
-                performance: { },
-                gallery: ["/partners/r1.png", "/partners/r2.jpeg", "/partners/r3.jpeg"]
-            }
-        ],
-        specs: [
-            { label: "Display", value: "27\" Curved Refresh" },
-            { label: "Controller", value: "Integrated Radio" },
-            { label: "Backup", value: "Built-in UPS" },
-            { label: "Software", value: "Multi-UAV Licensed" }
-        ],
-        features: [
-            "Realistic Physics Engine",
-            "Support for FPV/Fixed/Rotary",
-            "High-Fidelity Terrain Rendering",
-            "Plug-and-Play Setup",
-            "Comprehensive Mission Log"
-        ],
-        imageClass: "product-image-sim",
-        nickname: "MAESTRO",
-        galleryImages: [
-            "/partners/r1.png",
-            "/partners/r2.jpeg",
-            "/partners/r3.jpeg"
         ],
         whatsappNumber: "919494949698"
     }
