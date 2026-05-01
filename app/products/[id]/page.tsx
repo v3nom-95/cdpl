@@ -1,17 +1,31 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, redirect } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
+import ProductRequest from '../../../components/ProductRequest';
 import { products } from '../productData';
 import Link from 'next/link';
 
 export default function ProductPage() {
     const params = useParams();
     const id = (params.id as string) || '';
+
+    // Handle single-variant products: redirect directly to the variant page
+    if (id === 'raven') {
+        redirect('/products/raven/raven-trainer');
+    }
+    if (id === 'aot') {
+        redirect('/products/aot/aot-7');
+    }
+    if (id === 'horizon-fpv') {
+        redirect('/products/horizon-fpv/160-fpv');
+    }
+
     const product = products[id as keyof typeof products] as any;
     const [activeImage, setActiveImage] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
     const isBard = id === 'bard';
 
     useEffect(() => {
@@ -23,11 +37,20 @@ export default function ProductPage() {
             });
         }, { threshold: 0.1 });
 
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
         document.querySelectorAll('.reveal-section').forEach(section => {
             observer.observe(section);
         });
 
-        return () => observer.disconnect();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [id]);
 
     if (!product) {
@@ -50,133 +73,64 @@ export default function ProductPage() {
             <div className="product-detail-page bg-white" style={{ color: 'var(--text-primary)' }}>
                 <Navbar />
 
-                {/* Tech Hero Section with Video - High Contrast / No Fog */}
-                <section className="tech-hero-section" style={{ background: '#000', minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: 0 }}>
-                    <video autoPlay loop muted playsInline className="hero-video-bg" style={{ opacity: 0.7, objectFit: 'cover' }}>
+                {/* Tech Hero Section - Unified with Home Style */}
+                <section className="hero-section tech-hero-section" style={{ background: '#000', height: '100vh', position: 'relative', padding: 0 }}>
+                    <video autoPlay loop muted playsInline className="hero-video">
                         <source src="/partners/bardvideo.mp4" type="video/mp4" />
                     </video>
 
-                    {/* Tactical Overlays */}
-                    <div className="tactical-grid" style={{ opacity: 0.15, backgroundSize: '30px 30px' }}></div>
-                    <div className="scanline-v2" style={{ opacity: 0.5 }}></div>
+                    <div className="hero-overlay"></div>
 
-                    {/* Dark gradient for text legibility - Left Side Only */}
-                    <div style={{
+                    {/* Product Info - Bottom Left Overlay */}
+                    <div className="hero-info-content" style={{
                         position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 60%)',
-                        zIndex: 5
-                    }}></div>
-
-                    <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
-                        <div className="reveal-section" style={{ maxWidth: '800px' }}>
-                            <span className="tech-hero-subtitle" style={{ color: 'var(--accent-primary)', letterSpacing: '4px', fontWeight: '800', display: 'block', marginBottom: '1.5rem', fontSize: '0.8rem' }}>{product.brand} // {product.category}</span>
-
-                            <h1 className="tech-hero-title" style={{ color: '#fff', marginBottom: '1.5rem', fontSize: 'clamp(3.5rem, 14vw, 9rem)', fontWeight: '900', lineHeight: '1' }}>
-                                BARD
-                            </h1>
-
-                            <p className="bard-hero-tagline" style={{
-                                fontSize: '1.1rem',
-                                color: 'rgba(255,255,255,0.7)',
-                                maxWidth: '550px',
-                                fontWeight: '400',
-                                lineHeight: '1.6',
-                                marginBottom: 'clamp(2rem, 5vh, 4rem)'
-                            }}>
-                                {product.tagline}
-                            </p>
-
-                            {/* MAS Highlight with Logo */}
-                            <div className="bard-mas-label" style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '1rem',
-                                marginBottom: '2.5rem',
-                                color: 'var(--accent-primary)',
-                                fontWeight: '900',
-                                fontSize: '0.75rem',
-                                letterSpacing: '2px',
-                                fontFamily: 'var(--font-mono)'
-                            }}>
-                                <img src="/partners/masicon.png" alt="MAS" style={{ height: '30px', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
-                                <div style={{ height: '2px', width: '30px', background: 'var(--accent-primary)', flexShrink: 0 }}></div>
-                                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>[ MULTIMISSION_ISR_TACTICAL_NODE ]</span>
-                            </div>
-
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1.2rem, 4vw, 4rem)' }}>
-                                {product.heroSpecs.map((spec: any, i: number) => (
-                                    <div key={i} style={{ borderLeft: '3px solid var(--accent-primary)', paddingLeft: '1rem' }}>
-                                        <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '2px', marginBottom: '0.5rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{spec.label}</div>
-                                        <div style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', fontWeight: '900', color: '#fff' }}>{spec.value}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        bottom: 'clamp(2rem, 6vh, 4rem)',
+                        left: 'clamp(1.5rem, 5vw, 4rem)',
+                        zIndex: 25,
+                        maxWidth: '480px',
+                        textAlign: 'left',
+                        opacity: Math.max(1 - scrollY / 600, 0),
+                        transform: `translate3d(0, ${scrollY * 0.15}px, 0)`,
+                        transition: 'opacity 0.2s cubic-bezier(0.1, 0.5, 0.5, 1), transform 0.2s cubic-bezier(0.1, 0.5, 0.5, 1)',
+                        willChange: 'transform, opacity',
+                        borderLeft: '2px solid var(--accent-primary)',
+                        paddingLeft: 'clamp(0.8rem, 1.5vw, 1.2rem)'
+                    }}>
+                        <h1 style={{
+                            fontSize: 'clamp(1.8rem, 5vw, 3.2rem)',
+                            fontWeight: '900',
+                            lineHeight: '1',
+                            marginBottom: '0.6rem',
+                            color: '#ffffff',
+                            letterSpacing: '-1px',
+                            textShadow: '0 4px 20px rgba(0,0,0,0.8)'
+                        }}>
+                            {product.name.replace(/\s+V[\d.]+$/i, '').replace(/\s*–\s*/, ' ').replace(/\s+\d+\s+/, ' ').replace(/\s+SERIES$/i, '').trim().toUpperCase()}
+                        </h1>
                     </div>
 
-                    {/* Performance HUD - Sharp Tactical Look (No Fog) */}
-                    <div style={{
-                        position: 'absolute',
-                        right: '4rem',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        width: '320px',
-                        zIndex: 10,
-                        padding: '2.5rem',
-                        borderLeft: '2px solid var(--accent-primary)',
-                        background: 'rgba(0,0,0,0.7)',
-                        backdropFilter: 'blur(8px)',
-                        boxShadow: '0 0 40px rgba(0,0,0,0.3)'
-                    }} className="reveal-section hidden-mobile">
-                        <div style={{ fontSize: '0.6rem', color: 'var(--accent-primary)', letterSpacing: '3px', marginBottom: '3rem', fontWeight: '900' }}>[ SYSTEM_TELEMETRY_STREAM ]</div>
+                    {/* Scroll indicator removed as per request */}
+                </section>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.2rem' }}>
-                            {product.performanceMetrics?.map((stat: any, i: number) => (
-                                <div key={i}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', alignItems: 'flex-end' }}>
-                                        <span style={{ fontSize: '0.65rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', fontWeight: '600' }}>{stat.label}</span>
-                                        <span style={{ fontSize: '1rem', fontWeight: '900', color: 'var(--text-primary)' }}>{stat.value}{stat.unit}</span>
-                                    </div>
-                                    <div style={{ width: '100%', height: '2px', background: 'rgba(0,0,0,0.05)', position: 'relative' }}>
-                                        <div style={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            height: '100%',
-                                            width: `${stat.value}%`,
-                                            background: 'var(--accent-primary)',
-                                            boxShadow: '0 0 10px var(--accent-primary)'
-                                        }}></div>
-                                    </div>
+                {/* Simplified Specs Section (Visible on scroll) */}
+                <section className="reveal-section" style={{ background: '#000', padding: '100px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="container" style={{ textAlign: 'center' }}>
+                        <div className="tech-stats-grid-mobile" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 'clamp(2rem, 5vw, 6rem)' }}>
+                            {product.heroSpecs.map((spec: any, i: number) => (
+                                <div key={i} className="tech-stat-block" style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '2px', marginBottom: '0.5rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{spec.label}</div>
+                                    <div style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: '900', color: '#fff' }}>{spec.value}</div>
                                 </div>
                             ))}
                         </div>
-
-                        <div style={{ marginTop: '3.5rem', fontSize: '0.65rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', lineHeight: '1.8' }}>
-                            {">>"} SENSOR_ARRAY: OPTIMIZED<br />
-                            {">>"} CORE_LOGIC: STABLE<br />
-                            {">>"} DATA_LINK: SYNCED
-                        </div>
-                    </div>
-
-                    {/* Bottom status — hidden on mobile to prevent overflow */}
-                    <div className="bard-status-tag" style={{ position: 'absolute', bottom: '4rem', right: '4rem', textAlign: 'right', opacity: 0.5 }}>
-                        <div style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>SYSTEM_STATUS: OPERATIONAL</div>
-                        <div style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>THREAT_LEVEL: NOMINAL</div>
                     </div>
                 </section>
 
                 {/* Tactical Context Section */}
                 <section className="reveal-section bard-context-section" style={{ position: 'relative', display: 'flex', alignItems: 'center', background: '#fff' }}>
-                    <div className="scanline-v2"></div>
                     <div className="container bard-context-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(2rem, 6vw, 4rem)', alignItems: 'center', padding: 'clamp(4rem, 10vh, 8rem) 1.5rem' }}>
                         <div>
-                            <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '700' }}>[ MISSION_READY ]</span>
-                            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)', fontWeight: '800', margin: '1.5rem 0', lineHeight: '1.1', color: 'var(--text-primary)' }}>TACTICAL ISR</h2>
+                            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)', fontWeight: '800', margin: '0 0 1.5rem', lineHeight: '1.1', color: 'var(--text-primary)' }}>TACTICAL ISR</h2>
                             <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2.5vw, 1.2rem)', marginBottom: '3rem' }}>
                                 Every system is a modular node in a vast, autonomous network. {product.description}
                             </p>
@@ -184,10 +138,6 @@ export default function ProductPage() {
                         <div style={{ position: 'relative' }}>
                             <div className="gallery-frame" style={{ aspectRatio: '16/10', border: '1px solid rgba(0,0,0,0.1)' }}>
                                 <img src={product.galleryImages[0]} alt="Bard Action" className="main-gallery-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                <div className="gallery-overlay-tech">
-                                    <div className="tech-tag top-left" style={{ background: 'var(--accent-primary)', color: '#000' }}>AERIAL_RECON</div>
-                                    <div className="tech-tag bottom-right" style={{ background: 'var(--accent-primary)', color: '#000' }}>360_SENSORY_SWEEP</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,19 +158,22 @@ export default function ProductPage() {
                                     { color: '#0039A6', label: 'STD_UNIT' },
                                     { color: '#005C9E', label: 'THERMAL_OPTIC' },
                                     { color: '#584E41', label: 'LRF_TARGETING' },
-                                    { color: '#CC5D29', label: 'STRIKE_MOD_D' },
-                                    { color: '#960606', label: 'STRIKE_MOD_DN' }
+                                    { color: '#CC5D29', label: 'AI_INTEGRATED' },
+                                    { color: '#960606', label: 'MISSION_CFG' },
+                                    { color: '#000000', label: 'CFG_THERMAL' }
                                 ];
                                 const theme = themes[i % themes.length];
 
                                 return (
-                                    <div key={i} className="form-factor-card" style={{
+                                    <Link key={i} href={`/products/${id}/${v.id}`} className="form-factor-card" style={{
                                         background: '#fff',
                                         borderColor: 'rgba(0,0,0,0.08)',
                                         color: 'var(--text-primary)',
                                         padding: 'clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem)',
                                         boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
-                                        position: 'relative'
+                                        position: 'relative',
+                                        textDecoration: 'none',
+                                        transition: 'transform 0.3s ease, border-color 0.3s ease'
                                     }}>
                                         <div style={{
                                             position: 'absolute',
@@ -245,31 +198,45 @@ export default function ProductPage() {
 
                                         <h3 style={{ color: 'var(--text-primary)', fontSize: '2rem', letterSpacing: '-1px' }}>{v.variant}</h3>
                                         <p style={{ color: theme.color, marginBottom: '3rem', fontSize: '0.85rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontWeight: '700' }}>
-                                            {v.type} // {v.feature}
+                                            {v.type}
                                         </p>
 
-                                        <ul className="spec-list" style={{ marginTop: '2rem' }}>
-                                            <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>ENDURANCE</span><span style={{ color: 'var(--text-primary)' }}>{v.endurance}</span></li>
-                                            <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>RANGE</span><span style={{ color: 'var(--text-primary)' }}>{v.range}</span></li>
-                                            <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>PAYLOAD</span><span style={{ color: 'var(--text-primary)' }}>{v.payload}</span></li>
-                                            <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>ALTITUDE</span><span style={{ color: 'var(--text-primary)' }}>{v.altitude}</span></li>
-                                        </ul>
+                                        {product.category !== 'SIMULATOR' && (
+                                            <ul className="spec-list" style={{ marginTop: '2rem' }}>
+                                                <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>ENDURANCE</span><span style={{ color: 'var(--text-primary)' }}>{v.performance.endurance}</span></li>
+                                                <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>RANGE</span><span style={{ color: 'var(--text-primary)' }}>{v.performance.range}</span></li>
+                                                <li style={{ borderBottomColor: '#f1f5f9' }}><span style={{ color: 'var(--text-tertiary)' }}>PAYLOAD</span><span style={{ color: 'var(--text-primary)' }}>{v.performance.payload}</span></li>
+                                            </ul>
+                                        )}
 
                                         <div style={{ marginTop: 'clamp(2rem, 4vh, 4rem)' }}>
-                                            <button className="btn btn-outline" style={{
+                                            <div className="btn btn-outline" style={{
                                                 borderColor: 'var(--border-color)',
                                                 color: 'var(--text-primary)',
                                                 width: '100%',
                                                 borderRadius: '0',
                                                 fontSize: '0.75rem',
                                                 letterSpacing: '2px',
-                                                textTransform: 'uppercase'
-                                            }}>Request Data Sheet</button>
+                                                textTransform: 'uppercase',
+                                                textAlign: 'center'
+                                            }}>View Variant Details</div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 );
                             })}
                         </div>
+                    </div>
+                </section>
+
+                {/* WhatsApp Contact Component */}
+                <section className="reveal-section" style={{ background: '#fff', padding: '100px 0', borderTop: '1px solid #eee' }}>
+                    <div className="container" style={{ textAlign: 'center' }}>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Interested in custom BARD configurations?</h2>
+                        <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
+                            Our team can help you configure the perfect ISR platform for your specific mission requirements.
+                        </p>
+                        <ProductRequest productName="BARD SYSTEM" />
+
                     </div>
                 </section>
 
@@ -298,56 +265,72 @@ export default function ProductPage() {
                 <Footer />
 
                 <style jsx>{`
-                    /* ---- BARD PAGE MOBILE STYLES ---- */
-
-                    /* Hero: make gradient cover full width on mobile (text is short) */
-                    @media (max-width: 768px) {
-                        /* Full-width dark overlay on mobile so text is always readable */
-                        .tech-hero-section > div[style*="linear-gradient"] {
-                            background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 100%) !important;
+                    @media (max-width: 1024px) {
+                        .tech-hero-section {
+                            height: 75vh !important;
+                            min-height: 520px;
                         }
 
-                        /* Hero content: use full width, reduce padding */
-                        .tech-hero-section .container {
-                            padding: 0 1.4rem !important;
-                        }
-                        .tech-hero-section .container > div {
-                            max-width: 100% !important;
-                            padding: 7rem 0 4rem !important;
+                        .hero-info-content {
+                            bottom: 1.5rem !important;
+                            left: 1.5rem !important;
+                            right: auto !important;
+                            max-width: calc(100% - 3rem) !important;
                         }
 
-                        /* MAS label: hide the long text tag, keep icon */
-                        .bard-mas-label span:last-child {
-                            display: none;
+                        .hero-info-content h1 {
+                            font-size: clamp(1.4rem, 6vw, 2rem) !important;
+                            letter-spacing: -0.5px !important;
+                            margin-bottom: 0.4rem !important;
                         }
 
-                        /* Status tag: hide on mobile to avoid right-side overflow */
-                        .bard-status-tag {
-                            display: none !important;
+                        .hero-info-content p {
+                            font-size: 0.65rem !important;
+                            line-height: 1.5 !important;
+                            letter-spacing: 2px !important;
                         }
 
-                        /* Spec values: reduce size */
-                        .bard-hero-tagline {
-                            font-size: 0.95rem !important;
-                            margin-bottom: 2rem !important;
+                        .tech-stats-grid-mobile {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            gap: 3rem !important;
+                            padding: 2rem 0 !important;
                         }
 
-                        /* Variant card h3 */
-                        .form-factor-card h3 {
-                            font-size: 1.6rem !important;
+                        .tech-stat-block {
+                            width: 100% !important;
                         }
-                        .form-factor-card p {
-                            margin-bottom: 1.5rem !important;
+                        
+                        .bard-context-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 3rem !important;
+                            padding: 4rem 1.5rem !important;
+                        }
+
+                        .form-factor-container {
+                            grid-template-columns: 1fr !important;
+                            gap: 2rem !important;
+                        }
+
+                        .spec-hero {
+                             padding-top: 120px !important;
                         }
                     }
 
                     @media (max-width: 480px) {
-                        /* On small phones, also hide the MAS line decoration */
-                        .bard-mas-label div {
-                            display: none !important;
+                        .tech-hero-section {
+                            height: 70vh !important;
                         }
-                        .tech-hero-section .container > div {
-                            padding: 6rem 0 3rem !important;
+                        .hero-info-content {
+                            bottom: 1rem !important;
+                        }
+                        .hero-info-content h1 {
+                            font-size: 1.3rem !important;
+                            letter-spacing: 0px !important;
+                        }
+                        .hero-info-content p {
+                            font-size: 0.6rem !important;
+                            letter-spacing: 1.5px !important;
                         }
                     }
                 `}</style>
@@ -361,36 +344,68 @@ export default function ProductPage() {
             <Navbar />
 
             {/* Premium Hero Section */}
-            <section className="spec-hero reveal-section">
-                <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <span className="overline">{product.brand} · {product.category}</span>
-                        <h1 style={{
-                            fontSize: 'clamp(2rem, 8vw, 4.5rem)',
-                            fontWeight: '900',
-                            letterSpacing: '-2px',
-                            lineHeight: '1',
-                            marginBottom: '1.5rem',
-                            color: 'var(--text-primary)'
-                        }}>
-                            {product.name}
-                        </h1>
-                        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto' }}>{product.tagline}</p>
-                    </div>
+            <section style={{ background: '#000', height: '100vh', position: 'relative', padding: 0 }}>
+                {/* Background image */}
+                {product.galleryImages?.[0] && (
+                    <img
+                        src={product.galleryImages[0]}
+                        alt={product.name}
+                        style={{
+                            position: 'absolute',
+                            inset: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            opacity: 0.5
+                        }}
+                    />
+                )}
 
-                    {/* Big Tech Stats Grid */}
-                    {product.heroSpecs && product.heroSpecs.length > 0 && (
-                        <div className="tech-stats-grid">
+                {/* Dark overlay */}
+                <div className="hero-overlay"></div>
+
+                {/* Product Info - Bottom Left */}
+                <div className="default-hero-content" style={{
+                    position: 'absolute',
+                    bottom: 'clamp(2rem, 6vh, 4rem)',
+                    left: 'clamp(1.5rem, 5vw, 4rem)',
+                    zIndex: 25,
+                    maxWidth: '480px',
+                    textAlign: 'left',
+                    borderLeft: '2px solid var(--accent-primary)',
+                    paddingLeft: 'clamp(0.8rem, 1.5vw, 1.2rem)'
+                }}>
+                    <h1 style={{
+                        fontSize: 'clamp(1.8rem, 5vw, 3.2rem)',
+                        fontWeight: '900',
+                        lineHeight: '1',
+                        marginBottom: '0.6rem',
+                        color: '#ffffff',
+                        letterSpacing: '-1px',
+                        textShadow: '0 4px 20px rgba(0,0,0,0.8)'
+                    }}>
+                        {product.name.replace(/\s+V[\d.]+$/i, '').replace(/\s*–\s*/, ' ').replace(/\s+\d+\s+/, ' ').replace(/\s+SERIES$/i, '').trim().toUpperCase()}
+                    </h1>
+                </div>
+            </section>
+
+            {/* Specs Strip */}
+            {product.heroSpecs && product.heroSpecs.length > 0 && (
+                <section style={{ background: '#000', padding: '60px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="container" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2.5rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 'clamp(2rem, 5vw, 6rem)' }}>
                             {product.heroSpecs.map((spec: { label: string, value: string }, i: number) => (
-                                <div key={i} className="tech-stat-item">
-                                    <span className="tech-stat-value">{spec.value}</span>
-                                    <span className="tech-stat-label">{spec.label}</span>
+                                <div key={i} style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '2px', marginBottom: '0.4rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{spec.label}</div>
+                                    <div style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: '900', color: '#fff' }}>{spec.value}</div>
                                 </div>
                             ))}
                         </div>
-                    )}
-                </div>
-            </section>
+                        <ProductRequest productName={product.name} />
+                    </div>
+                </section>
+            )}
+
 
             {/* Futuristic Product Gallery */}
             {product.galleryImages && product.galleryImages.length > 0 && (
@@ -403,14 +418,6 @@ export default function ProductPage() {
                                     <span className="corner corner-tr"></span>
                                     <span className="corner corner-bl"></span>
                                     <span className="corner corner-br"></span>
-
-                                    <div className="gallery-overlay-tech">
-                                        <div className="tech-tag top-left">SYSTEM_VIEW_{activeImage + 1}</div>
-                                        <div className="tech-tag top-right">MAS_ID_{id.toUpperCase()}_0{activeImage + 1}</div>
-                                        <div className="tech-tag bottom-left">RADAR_LOCK: STABLE</div>
-                                        <div className="tech-tag bottom-right">RECON_MODE: ACTIVE</div>
-                                        <div className="scan-line"></div>
-                                    </div>
 
                                     <img
                                         key={activeImage}
@@ -500,34 +507,103 @@ export default function ProductPage() {
 
             {/* Variant Breakdown Section */}
             {product.variants && product.variants.length > 0 && (
-                <section className="about-section reveal-section" style={{ borderTop: '1px solid var(--border-color)', background: '#fff' }}>
+                <section className="reveal-section" style={{ background: '#fafafa', padding: 'clamp(4rem, 8vh, 10rem) 0', borderTop: '1px solid #eee' }}>
                     <div className="container">
-                        <h4 className="spec-category-title" style={{ marginBottom: '3rem' }}>VARIANT CONFIGURATIONS</h4>
-                        <div style={{ width: '100%', overflowX: 'auto' }}>
-                            <table className="variant-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
-                                <thead>
-                                    <tr style={{ background: 'var(--bg-tactical)', textAlign: 'left' }}>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Variant</th>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Type</th>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Endurance</th>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Range</th>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Payload</th>
-                                        <th style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>Feature</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {product.variants.map((v: any, i: number) => (
-                                        <tr key={i} style={{ borderBottom: '1px solid var(--border-color)' }}>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)', fontWeight: '700', color: 'var(--accent-primary)' }}>{v.variant}</td>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>{v.type}</td>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>{v.endurance}</td>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>{v.range}</td>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>{v.payload}</td>
-                                            <td style={{ padding: '1rem', border: '1px solid var(--border-color)' }}>{v.feature}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <div style={{ marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
+                            <span style={{ color: 'var(--accent-primary)', letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '700' }}>[ VARIANTS ]</span>
+                            <h2 style={{ fontSize: 'clamp(2.2rem, 8vw, 5rem)', fontWeight: '900', marginTop: '1rem', letterSpacing: '-1px', color: 'var(--text-primary)' }}>AVAILABLE CONFIGURATIONS</h2>
+                        </div>
+
+                        <div className="form-factor-container" style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                            gap: '2.5rem'
+                        }}>
+                            {product.variants.map((v: any, i: number) => {
+                                const themes = [
+                                    { color: '#0039A6', label: 'STD_UNIT' },
+                                    { color: '#005C9E', label: 'TACTICAL' },
+                                    { color: '#584E41', label: 'RECON' },
+                                    { color: '#CC5D29', label: 'ADV_ISR' },
+                                    { color: '#960606', label: 'OPERATIONAL' },
+                                    { color: '#000000', label: 'SPECIAL_PURPOSE' }
+                                ];
+                                const theme = themes[i % themes.length];
+
+                                return (
+                                    <Link key={i} href={`/products/${id}/${v.id}`} className="form-factor-card" style={{
+                                        background: '#fff',
+                                        borderColor: 'rgba(0,0,0,0.08)',
+                                        color: 'var(--text-primary)',
+                                        padding: 'clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem)',
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
+                                        position: 'relative',
+                                        textDecoration: 'none',
+                                        transition: 'transform 0.3s ease, border-color 0.3s ease',
+                                        display: 'block',
+                                        border: '1px solid var(--border-color)',
+                                        borderRadius: '4px'
+                                    }}>
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: '2rem',
+                                            right: '2rem',
+                                            fontSize: '0.6rem',
+                                            fontFamily: 'var(--font-mono)',
+                                            color: 'var(--text-tertiary)',
+                                            letterSpacing: '2px'
+                                        }}>
+                                            [ {theme.label} ]
+                                        </div>
+
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '4px',
+                                            height: '100%',
+                                            background: theme.color
+                                        }}></div>
+
+                                        <h3 style={{ color: 'var(--text-primary)', fontSize: '2rem', letterSpacing: '-1px', marginBottom: '0.5rem' }}>{v.variant}</h3>
+                                        <p style={{ color: theme.color, marginBottom: '3rem', fontSize: '0.85rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontWeight: '700' }}>
+                                            {v.type}
+                                        </p>
+
+                                        {product.category !== 'SIMULATOR' && (
+                                            <ul className="spec-list" style={{ marginTop: '2rem', listStyle: 'none', padding: 0 }}>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 0', borderBottom: '1px solid #f1f5f9' }}>
+                                                    <span style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', fontWeight: '600' }}>ENDURANCE</span>
+                                                    <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>{v.performance?.endurance || v.endurance || 'N/A'}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 0', borderBottom: '1px solid #f1f5f9' }}>
+                                                    <span style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', fontWeight: '600' }}>RANGE</span>
+                                                    <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>{v.performance?.range || v.range || 'N/A'}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 0', borderBottom: '1px solid #f1f5f9' }}>
+                                                    <span style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', fontWeight: '600' }}>PAYLOAD</span>
+                                                    <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}>{v.performance?.payload || v.payload || 'N/A'}</span>
+                                                </li>
+                                            </ul>
+                                        )}
+
+                                        <div style={{ marginTop: 'clamp(2rem, 4vh, 4rem)' }}>
+                                            <div className="btn btn-outline" style={{
+                                                borderColor: 'var(--border-color)',
+                                                color: 'var(--text-primary)',
+                                                width: '100%',
+                                                borderRadius: '0',
+                                                fontSize: '0.75rem',
+                                                letterSpacing: '2px',
+                                                textTransform: 'uppercase',
+                                                textAlign: 'center',
+                                                padding: '1rem',
+                                                border: '1px solid var(--border-color)'
+                                            }}>Explore System</div>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 </section>
@@ -552,6 +628,52 @@ export default function ProductPage() {
             </section> */}
 
             <Footer />
+
+            <style jsx>{`
+                @media (max-width: 1024px) {
+                    .default-hero-content {
+                        bottom: 1.5rem !important;
+                        left: 1.5rem !important;
+                        max-width: calc(100% - 3rem) !important;
+                    }
+                    .default-hero-content h1 {
+                        font-size: clamp(1.4rem, 6vw, 2rem) !important;
+                        letter-spacing: -0.5px !important;
+                        margin-bottom: 0.4rem !important;
+                    }
+                    .default-hero-content p {
+                        font-size: 0.65rem !important;
+                        letter-spacing: 2px !important;
+                    }
+
+                    .tech-stats-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 3rem !important;
+                    }
+
+                    .gallery-layout {
+                        grid-template-columns: 1fr !important;
+                    }
+
+                    .about-content {
+                        grid-template-columns: 1fr !important;
+                        gap: 4rem !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .default-hero-content {
+                        bottom: 1rem !important;
+                    }
+                    .default-hero-content h1 {
+                        font-size: 1.3rem !important;
+                    }
+                    .default-hero-content p {
+                        font-size: 0.6rem !important;
+                        letter-spacing: 1.5px !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

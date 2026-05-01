@@ -40,19 +40,47 @@ const HackerLink = ({ href, text, children, className = "", isActive = false, on
     };
 
     return (
-        <Link href={href} className={`hacker-link ${className} ${isActive ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={onClick}>
-            <span className="hacker-text">{displayText}</span>
-            <span className="static-text">{text}</span>
+        <Link
+            href={href}
+            className={`hacker-link ${className} ${isActive ? 'active' : ''}`}
+            onMouseEnter={handleMouseEnter}
+            onClick={onClick}
+        >
+            <div className="hacker-text-wrapper">
+                <span className="hacker-text">{displayText}</span>
+                <span className="static-text-placeholder">{text}</span>
+            </div>
             {children}
             <span className="corner corner-tl"></span>
             <span className="corner corner-tr"></span>
             <span className="corner corner-bl"></span>
             <span className="corner corner-br"></span>
             <style jsx>{`
-                .static-text { display: none; }
+                .hacker-text-wrapper {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .hacker-text {
+                    position: absolute;
+                    white-space: nowrap;
+                    z-index: 2;
+                }
+                .static-text-placeholder {
+                    visibility: hidden;
+                    white-space: nowrap;
+                    pointer-events: none;
+                }
                 @media (max-width: 992px) {
-                    .static-text { display: inline-block !important; color: #0a0b0d !important; width: 100%; text-align: center; }
-                    .hacker-text { display: none !important; }
+                    .hacker-text { 
+                        position: relative !important;
+                        display: inline-block !important; 
+                        color: #0a0b0d !important; 
+                        width: 100%; 
+                        text-align: center; 
+                    }
+                    .static-text-placeholder { display: none !important; }
                     .corner { display: none !important; }
                 }
             `}</style>
@@ -68,8 +96,10 @@ const Navbar = () => {
     const router = useRouter();
     const pathname = usePathname();
     const isHomePage = pathname === '/';
-    const isBardPage = pathname === '/products/bard';
-    const hasDarkHero = isHomePage || isBardPage;
+    const isBardPage = pathname.startsWith('/products/bard');
+    const isRavenPage = pathname === '/products/raven/raven-trainer';
+    const isCareersPage = pathname === '/careers';
+    const hasDarkHero = isHomePage || isBardPage || isRavenPage || isCareersPage;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -149,55 +179,85 @@ const Navbar = () => {
                         onMouseEnter={openMegaMenu}
                         onMouseLeave={closeMegaMenuDelayed}
                     >
-                        <HackerLink href="/#products" text="Products" isActive={pathname.startsWith('/products') || pathname === '/mas' || pathname === '/mgs' || pathname === '/mms'} />
+                        <HackerLink href="/products" text="Products" isActive={pathname.startsWith('/products') || pathname === '/mas' || pathname === '/mgs' || pathname === '/mms'} />
                         <div className={`mega-menu ${isMegaMenuOpen ? 'active' : ''}`}>
                             <div className="mega-menu-container">
                                 <div className="mega-column" style={{ borderRight: '1px solid rgba(0, 57, 166, 0.1)' }}>
-                                    <Link href="/mas" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mas' || pathname.startsWith('/products/mas') ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <div style={{ height: '30px', width: '40px', background: '#ffffff', border: '1px solid var(--team-mas)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2', overflow: 'hidden' }}>
+                                    <Link href="/mas" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mas' || pathname.startsWith('/products/mas') ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative' }}>
+                                        <div style={{ height: '30px', width: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2' }}>
                                             <img src="/partners/masicon.png" alt="MAS" style={{ height: '26px', width: '36px', objectFit: 'contain' }} />
                                         </div>
-                                        <span className="mega-category" style={{ color: 'var(--team-mas)', position: 'relative', zIndex: '2' }}>Major Aerospace Systems</span>
+                                        <h4 style={{ color: 'var(--team-mas)', position: 'relative', zIndex: '2', margin: 0, fontSize: '1rem', fontWeight: '700', letterSpacing: '0.1em', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>Major Aerospace Systems</h4>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
                                         <span className="corner corner-br"></span>
                                     </Link>
                                     <div className="mega-links">
-                                        <Link href="/products/raven" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">RAVEN</span>
-                                            <span className="link-desc">Simulator</span>
+                                        <Link href="/products/raven/raven-trainer" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/r1.png" alt="RAVEN" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">RAVEN</span>
+                                                <span className="link-desc">Simulator</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/products/bard" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">BARD </span>
-                                            <span className="link-desc">Strategic Quad ISR</span>
+                                        <Link href="/products/bard" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/bard1.png" alt="BARD" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">BARD </span>
+                                                <span className="link-desc">Strategic Quad ISR</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/products/horizon-vtol" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">HORIZON VTOL</span>
-                                            <span className="link-desc">Long Range Fixed-Wing</span>
+                                        <Link href="/products/horizon-vtol" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/horizonvtol.png" alt="HORIZON VTOL" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '2px' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">HORIZON VTOL</span>
+                                                <span className="link-desc">Long Range Fixed-Wing</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/products/horizon-fpv" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">HORIZON FPV</span>
-                                            <span className="link-desc">Advanced Trainer</span>
+                                        <Link href="/products/horizon-fpv" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/horizonfpv.jpeg" alt="HORIZON FPV" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">HORIZON FPV</span>
+                                                <span className="link-desc">Advanced Trainer</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/products/stinger" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">STINGER </span>
-                                            <span className="link-desc">Tactical Strike</span>
+                                        <Link href="/products/stinger" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/stinger.jpeg" alt="STINGER" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">STINGER </span>
+                                                <span className="link-desc">Tactical Strike</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/products/aot" onClick={handleMegaLinkClick} className="mega-link-item team-mas">
-                                            <span className="link-title">AOT Trainer</span>
-                                            <span className="link-desc">Pilot Training</span>
+                                        <Link href="/products/aot" onClick={handleMegaLinkClick} className="mega-link-item team-mas" style={{ flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ width: '44px', height: '44px', background: '#f8f9fa', border: '1px solid rgba(0, 57, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px', overflow: 'hidden' }}>
+                                                <img src="/partners/aot.png" alt="AOT Trainer" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span className="link-title">AOT Trainer</span>
+                                                <span className="link-desc">Pilot Training</span>
+                                            </div>
                                         </Link>
-                                        <Link href="/mas" onClick={handleMegaLinkClick} className="view-all-link" style={{ color: 'var(--team-mas)' }}>View MAS Portfolio &rarr;</Link>
+                                        <Link href="/mas" onClick={handleMegaLinkClick} className="view-all-link" style={{ color: 'var(--team-mas)', marginTop: '0.5rem' }}>View MAS Portfolio &rarr;</Link>
                                     </div>
                                 </div>
 
                                 <div className="mega-column" style={{ borderRight: '1px solid rgba(75, 83, 32, 0.1)' }}>
-                                    <Link href="/mgs" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mgs' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <div style={{ height: '30px', width: '40px', background: '#ffffff', border: '1px solid var(--team-mgs)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2', overflow: 'hidden' }}>
+                                    <Link href="/mgs" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mgs' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative' }}>
+                                        <div style={{ height: '30px', width: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2' }}>
                                             <img src="/partners/mgsicon.png" alt="MGS" style={{ height: '26px', width: '36px', objectFit: 'contain' }} />
                                         </div>
-                                        <span className="mega-category" style={{ color: 'var(--team-mgs)', position: 'relative', zIndex: '2' }}>Major Ground Systems</span>
+                                        <h4 style={{ color: 'var(--team-mgs)', position: 'relative', zIndex: '2', margin: 0, fontSize: '1rem', fontWeight: '700', letterSpacing: '0.1em', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>Major Ground Systems</h4>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
@@ -212,11 +272,11 @@ const Navbar = () => {
                                 </div>
 
                                 <div className="mega-column">
-                                    <Link href="/mms" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mms' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative', padding: '10px' }}>
-                                        <div style={{ height: '30px', width: '40px', background: '#ffffff', border: '1px solid var(--team-mms)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2', overflow: 'hidden' }}>
+                                    <Link href="/mms" onClick={handleMegaLinkClick} className={`mega-header ${pathname === '/mms' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem', textDecoration: 'none', cursor: 'pointer', position: 'relative' }}>
+                                        <div style={{ height: '30px', width: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: '2' }}>
                                             <img src="/partners/mmsicon.png" alt="MMS" style={{ height: '26px', width: '36px', objectFit: 'contain' }} />
                                         </div>
-                                        <span className="mega-category" style={{ color: 'var(--team-mms)', position: 'relative', zIndex: '2' }}>Major Marine Systems</span>
+                                        <h4 style={{ color: 'var(--team-mms)', position: 'relative', zIndex: '2', margin: 0, fontSize: '1rem', fontWeight: '700', letterSpacing: '0.1em', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>Major Marine Systems</h4>
                                         <span className="corner corner-tl"></span>
                                         <span className="corner corner-tr"></span>
                                         <span className="corner corner-bl"></span>
@@ -232,7 +292,15 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <HackerLink href="/resources" text="Resources" isActive={pathname === '/resources'} onClick={() => setIsMegaMenuOpen(false)} />
+                    <div className="dropdown">
+                        <HackerLink href="/resources" text="Resources" isActive={pathname === '/resources'} onClick={() => setIsMegaMenuOpen(false)} />
+                        <div className="dropdown-content">
+                            <Link href="/resources#news-room" onClick={() => setIsMegaMenuOpen(false)}>News Room</Link>
+                            <Link href="/resources#photos-videos" onClick={() => setIsMegaMenuOpen(false)}>Photos & Videos</Link>
+                            <Link href="/resources#downloads" onClick={() => setIsMegaMenuOpen(false)}>Downloads</Link>
+                        </div>
+                    </div>
+                    <HackerLink href="/careers" text="Careers" isActive={pathname === '/careers'} onClick={() => setIsMegaMenuOpen(false)} />
                     <Link href="/contact" className="btn btn-primary nav-btn" onClick={() => setIsMegaMenuOpen(false)}>Contact</Link>
                 </div>
             </div>
@@ -256,7 +324,7 @@ const Navbar = () => {
                     width: 100%;
                     height: 2px;
                     background-color: ${(scrolled || !hasDarkHero || isMobileMenuOpen) ? 'var(--text-primary)' : '#fff'};
-                    transition: all 0.3s ease;
+                    transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.45s ease, opacity 0.45s ease;
                 }
 
                 /* Force dark cross on white mobile menu */
@@ -294,7 +362,7 @@ const Navbar = () => {
                         justify-content: flex-start;
                         gap: 1.5rem; /* Reduced gap from 2rem */
                         transform: translateX(100%);
-                        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                        transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
                         box-shadow: -10px 0 40px rgba(0,0,0,0.15);
                         z-index: 2000;
                         padding: 7rem 2rem 4rem; /* Adjusted top padding */
@@ -349,18 +417,29 @@ const Navbar = () => {
                         box-shadow: none;
                         background: transparent;
                         padding: 0;
-                        margin-top: 0.5rem;
-                        display: flex;
+                        margin-top: 0; 
+                        display: flex !important;
                         flex-direction: column;
                         align-items: center;
                         gap: 0.5rem;
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        pointer-events: auto !important;
+                        transform: none !important;
+                        border: none !important;
+                        width: 100%;
                     }
                     
                     .dropdown-content a {
-                        font-size: 0.9rem;
-                        color: #555;
+                        font-family: var(--font-mono);
+                        font-size: 0.8rem;
+                        color: #555 !important;
                         text-transform: uppercase;
                         letter-spacing: 1px;
+                        padding: 0.5rem 0;
+                        border: none;
+                        width: 100%;
+                        text-align: center;
                     }
 
                     /* Mega Menu Mobile Styles */
@@ -437,20 +516,41 @@ const Navbar = () => {
                         line-height: 1.2;
                     }
 
-                    /* Hide specific sub-links and descriptions on mobile to reduce clutter */
+                    /* Hide specific product links and sub-descriptions on mobile */
                     .mega-links {
                         display: none !important;
                     }
-                    
-                    /* Show corners on hover for desktop only */
-                    .nav-links .hacker-link:hover,
-                    .nav-links .hacker-link:hover .hacker-text {
-                         color: var(--accent-primary) !important;
+
+                    .mega-header {
+                        width: 100% !important;
+                        max-width: none !important;
+                        justify-content: center !important;
+                        padding: 0.5rem 0 !important;
+                        margin-bottom: 0 !important;
+                        border: none !important;
                     }
 
+                    .mega-header h4 {
+                        font-family: var(--font-mono);
+                        font-size: 0.8rem !important;
+                        color: #555 !important;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        font-weight: 500 !important;
+                    }
+                    
+                    /* Hide those divider/logo boxes in mobile view for cleaner list */
+                    .mega-header > div:first-child {
+                         display: none !important;
+                    }
+                    
+                    .view-all-link {
+                         display: none !important;
+                    }
+                    
                     .nav-btn {
                         width: 100%;
-                        margin-top: 1rem;
+                        margin-top: 1.5rem;
                     }
                 }
                 @media (max-width: 768px) {

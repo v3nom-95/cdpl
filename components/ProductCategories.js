@@ -81,7 +81,7 @@ export default function ProductCategories() {
         {
             id: "mas",
             title: "Major Aerospace Systems",
-            tagline: "A BRAND OF CDPL",
+            tagline: "CDPL AERO DIVISION",
             description: "Dedicated to the design and development of advanced Autonomous Aerial Systems (AAS) and Group 1/2/3 UAS, delivering software-defined warfare supremacy for defense and institutional surveillance.",
             logo: "/partners/masicon.png",
             link: "/mas",
@@ -91,7 +91,7 @@ export default function ProductCategories() {
         {
             id: "mms",
             title: "Major Marine Systems",
-            tagline: "A BRAND OF CDPL",
+            tagline: "CDPL MARINE DIVISION",
             description: "Pioneering distributed maritime operations and seabed warfare, delivering Autonomous Submarines and Unmanned Surface Vehicles (USVs) for asymmetric naval warfare.",
             logo: "/partners/mmsicon.png",
             link: "/mms",
@@ -101,7 +101,7 @@ export default function ProductCategories() {
         {
             id: "mgs",
             title: "Major Ground Systems",
-            tagline: "A BRAND OF CDPL",
+            tagline: "CDPL GROUND DIVISION",
             description: "Developing advanced Unmanned Ground Vehicles (UGVs) and Defense Robotics engineered for complex counter-UAS (C-UAS), human-machine teaming, and resilient logistics.",
             logo: "/partners/mgsicon.png",
             link: "/mgs",
@@ -113,7 +113,7 @@ export default function ProductCategories() {
     return (
         <section id="products" className="products-section">
             <div className="container">
-                <h2 className="section-title">Brand Hierarchy</h2>
+                <h2 className="section-title">Our Offerings</h2>
                 <p className="section-subtitle">Pioneering Autonomy across Air, Sea, and Land domains.</p>
 
                 <div className="products-grid">

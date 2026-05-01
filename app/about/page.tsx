@@ -13,19 +13,19 @@ export default function AboutPage() {
 
     const divisions = [
         {
-            name: "Major Aerospace Systems",
+            name: "Major\u00A0Aerospace\nSystems",
             id: "MAS",
             logo: "/partners/masicon.png",
             desc: "Software-defined warfare, Group 1/2/3 UAS, and kinetic interceptors."
         },
         {
-            name: "Major Ground Systems",
+            name: "Major\u00A0Ground\nSystems",
             id: "MGS",
             logo: "/partners/mgsicon.png",
             desc: "Unmanned Ground Vehicles (UGVs), Robotic Combat Vehicles (RCVs), and C-UAS."
         },
         {
-            name: "Major Marine Systems",
+            name: "Major\u00A0Marine\nSystems",
             id: "MMS",
             logo: "/partners/mmsicon.png",
             desc: "Unmanned Surface Vehicles (USVs), Autonomous Submarines, and seabed warfare."
@@ -34,46 +34,52 @@ export default function AboutPage() {
 
     const leadership = [
         {
-            name: "Major Sundeep (Retd.)",
+            name: "Major Sandeep (Retd)",
             role: "Founder & CEO",
             details: "12+ Years operating Autonomous Systems | Alumni of IIT J & IIM A",
             bio: "Veteran-led insight. We understand what soldiers need because we have been in their boots.",
-            image: "/partners/rama.jpg"
+            image: "/partners/rama.jpg",
+            linkedin: "#" // TODO: update with actual LinkedIn URL
         },
         {
             name: "Naveen Kanakadandi",
             role: "Co-Founder, MD & CFO",
             details: "18+ years steering strategy and tech execution | ex-Amazon, Google",
             bio: "Drives financial strategy and operational scaling for global growth.",
-            image: "/partners/nav.jpeg"
+            image: "/partners/nav.jpeg",
+            linkedin: "#" // TODO: update with actual LinkedIn URL
         },
         {
             name: "Vishal Kumar Singh",
             role: "Co-Founder & CTO",
             details: "6+ Years of Product development and Engineering experience",
             bio: "Leads autonomy platform and AI system architecture.",
-            image: "/partners/vish.png"
+            image: "/partners/vish.png",
+            linkedin: "#" // TODO: update with actual LinkedIn URL
         },
         {
-            name: "Major Rajesh Yangaladasu (Retd)",
+            name: "Major Rajesh (Retd)",
             role: "VP, Business Development & Sales",
             details: "Military veteran | Tactical Instructor | Defense Strategist | Alumni of IIM Lucknow",
             bio: "Strategic mind behind elite defense partnerships.",
-            image: null
+            image: null,
+            linkedin: "#" // TODO: update with actual LinkedIn URL
         },
         {
             name: "Anurag Madedhi",
             role: "Co-Founder, Head of Procurement & Vendor Strategy",
             details: "Masters in Material Science & Manufacturing | Biotechnology ex-COO",
             bio: "Leads production excellence and hardware precision.",
-            image: null
-        },
+            image: null,
+            linkedin: "#" // TODO: update with actual LinkedIn URL
+        }
+    ];
+
+    const advisors = [
         {
             name: "Srikanth Dhuta",
-            role: "Legal Advisor",
-            details: "Legal structuring & IP strategy",
-            bio: "Ensures compliance and protects sovereign technology assets.",
-            image: null
+            designation: "Legal Advisor",
+            bio: "Ensures compliance and protects sovereign technology assets."
         }
     ];
 
@@ -83,31 +89,25 @@ export default function AboutPage() {
 
             {/* Hero Section */}
             <section className="about-hero" style={{ padding: 'clamp(100px, 15vh, 160px) 0 clamp(40px, 8vh, 80px)', background: '#fff' }}>
-                <div className="container">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.6rem, 2vw, 0.8rem)', letterSpacing: '4px', marginBottom: '2rem' }}>
-                        <span>[ COMPANY_IDENTITY ]</span>
-                        <div style={{ flex: 1, height: '1px', background: 'rgba(0, 52, 166, 0.1)' }}></div>
-                    </div>
-
-                    <h1 style={{ fontSize: 'clamp(2.2rem, 10vw, 6rem)', fontWeight: '900', lineHeight: '0.9', marginBottom: '2.5rem', wordBreak: 'break-word' }}>
-                        CHAKRAVYUHA <span style={{ color: 'var(--accent-primary)' }}>DYNAMICS</span>
+                <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+                    <h1 style={{ fontSize: 'clamp(3.5rem, 6.5vw, 7rem)', fontWeight: '900', lineHeight: '0.9', letterSpacing: '-2px', textTransform: 'uppercase', margin: 0 }}>
+                        <span style={{ color: '#111', display: 'block' }}>CHAKRAVYUHA</span>
+                        <span style={{ color: 'var(--accent-primary)', display: 'block' }}>DYNAMICS</span>
                     </h1>
-
-
                 </div>
             </section>
 
             {/* Vision & Mission */}
             <section style={{ padding: 'clamp(3rem, 8vh, 6rem) 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
-                <div className="container">
+                <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                     <div className="vision-mission-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)' }}>
                         <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem' }}>
-                            <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>VISION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
+                            <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800', fontSize: '1.3rem' }}>VISION</h4>
+                            <p style={{ fontSize: '1.2rem', fontWeight: '500', color: 'var(--text-primary)', lineHeight: '1.7' }}>To create sovereign Physical Intelligence that protects India and empowers humanity through autonomous systems.</p>
                         </div>
                         <div style={{ borderLeft: '4px solid var(--accent-secondary)', paddingLeft: '1.5rem' }}>
-                            <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800' }}>MISSION</h4>
-                            <p style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>Deploy intelligent autonomous systems for defense and dual-use applications & protecting soldiers, empowering industries, and establishing India's leadership in Physical Intelligence.</p>
+                            <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem', letterSpacing: '2px', fontWeight: '800', fontSize: '1.3rem' }}>MISSION</h4>
+                            <p style={{ fontSize: '1.2rem', fontWeight: '500', color: 'var(--text-primary)', lineHeight: '1.7' }}>Deploy intelligent autonomous systems for defense and dual-use applications & protecting soldiers, empowering industries, and establishing India's leadership in Physical Intelligence.</p>
                         </div>
                     </div>
                 </div>
@@ -117,18 +117,20 @@ export default function AboutPage() {
             <section style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#fff' }}>
                 <div className="container">
                     <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
-                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem', color: 'var(--text-primary)' }}>Core Divisions</h2>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem', color: 'var(--text-primary)' }}>Our Offerings</h2>
                     </div>
 
                     <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
                         {divisions.map((div, i) => (
                             <div key={i} className="product-card" style={{ padding: 'clamp(2rem, 4vw, 3.5rem)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', background: '#f8fafc' }}>
                                 <span className="corner corner-tl"></span>
+                                <span className="corner corner-tr"></span>
+                                <span className="corner corner-bl"></span>
                                 <span className="corner corner-br"></span>
                                 <div style={{ height: '140px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2.5rem' }}>
                                     <img src={div.logo} alt={div.name} style={{ maxHeight: '100%', maxWidth: '90%', objectFit: 'contain' }} />
                                 </div>
-                                <h3 style={{ fontSize: '1.6rem', marginBottom: '1.2rem', fontWeight: '900', color: 'var(--text-primary)' }}>{div.name}</h3>
+                                <h3 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.6rem)', marginBottom: '1.2rem', fontWeight: '900', color: 'var(--text-primary)', whiteSpace: 'pre-line', textTransform: 'uppercase' }}>{div.name}</h3>
                                 <div style={{ height: '2px', width: '40px', background: 'var(--accent-primary)', marginBottom: '1.5rem' }}></div>
                                 <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>{div.desc}</p>
                             </div>
@@ -138,6 +140,7 @@ export default function AboutPage() {
             </section>
 
             {/* Leadership Section */}
+            {/* Leadership Section */}
             <section id="leadership" style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#f8fafc', borderTop: '1px solid #f1f5f9' }}>
                 <div className="container">
                     <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
@@ -146,33 +149,43 @@ export default function AboutPage() {
 
                     <div className="products-grid leadership-grid">
                         {leadership.map((leader, index) => (
-                            <div key={index} className="product-card" style={{ padding: '2.5rem', minHeight: 'auto', background: '#fff' }}>
+                            <a key={index} href={leader.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                                <div className="product-card" style={{ padding: '2.5rem', minHeight: 'auto', background: '#fff', cursor: 'pointer', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
+                                    onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-3px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(0,52,166,0.12)'; }}
+                                    onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
+                                >
+                                    <span className="corner corner-tl"></span>
+                                    <span className="corner corner-tr"></span>
+                                    <span className="corner corner-bl"></span>
+                                    <span className="corner corner-br"></span>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                        <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{leader.name}</h3>
+                                        <span style={{ color: 'var(--accent-primary)', fontWeight: '800', lineHeight: '1.2', fontSize: '0.80rem', fontFamily: 'var(--font-mono)' }}>{leader.role.toUpperCase()}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Advisors Section */}
+            <section id="advisors" style={{ padding: 'clamp(4rem, 8vh, 8rem) 0', background: '#fff', borderTop: '1px solid #f1f5f9' }}>
+                <div className="container">
+                    <div className="leadership-title-section" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 6rem)' }}>
+                        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', marginTop: '1rem', color: 'var(--text-primary)' }}>Advisors</h2>
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem' }}>
+                        {advisors.map((advisor, index) => (
+                            <div key={index} className="product-card" style={{ width: '100%', maxWidth: '380px', padding: '2.5rem', minHeight: 'auto', background: '#f8fafc' }}>
                                 <span className="corner corner-tl"></span>
+                                <span className="corner corner-tr"></span>
+                                <span className="corner corner-bl"></span>
                                 <span className="corner corner-br"></span>
-                                {/* <div className="product-image" style={{
-                                    height: '260px',
-                                    marginBottom: '2.5rem',
-                                    position: 'relative',
-                                    overflow: 'hidden',
-                                    border: '1px solid rgba(0,0,0,0.05)',
-                                    background: '#f3f4f6'
-                                }}>
-                                    {leader.image ? (
-                                        <img src={leader.image} alt={leader.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                    ) : (
-                                        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                            <div style={{ fontSize: '0.6rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', marginBottom: '0.5rem' }}>SECURE_ID: 00{index + 1}</div>
-                                            <span style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', fontWeight: '800' }}>PORTRAIT_OFFLINE</span>
-                                        </div>
-                                    )}
-                                </div> */}
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                    <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{leader.name}</h3>
-                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800', lineHeight: '1.2', fontSize: '0.80rem', fontFamily: 'var(--font-mono)' }}>{leader.role.toUpperCase()}</span>
-                                    {/* <p style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', lineHeight: '1.4', marginBottom: '1.5rem' }}>{leader.details}</p>
-                                    <p style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--text-primary)', borderLeft: '2px solid var(--accent-primary)', paddingLeft: '1rem' }}>
-                                        "{leader.bio}"
-                                    </p> */}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', textAlign: 'center' }}>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{advisor.name}</h3>
+                                    <span style={{ color: 'var(--accent-primary)', fontWeight: '800', lineHeight: '1.2', fontSize: '0.80rem', fontFamily: 'var(--font-mono)' }}>{advisor.designation.toUpperCase()}</span>
                                 </div>
                             </div>
                         ))}

@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { Inter, JetBrains_Mono, Orbitron } from 'next/font/google'
+import Chatbot from '../components/Chatbot'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -18,9 +19,11 @@ const orbitron = Orbitron({
 
 export const metadata = {
     title: 'CDPL | Autonomous Tech Supremacy',
-    description: 'Chakravyuh Dynamics (CDPL) - Pioneers in autonomous defense across Air (MAS), Sea (MMS), and Land (MGS) domains.',
+    description: 'Chakravyuha Dynamics (CDPL) - Pioneers in autonomous defense across Air (MAS), Sea (MMS), and Land (MGS) domains.',
     icons: {
-        icon: '/partners/favicon.jpg',
+        icon: '/images/cdplfav.png',
+        shortcut: '/images/cdplfav.png',
+        apple: '/images/cdplfav.png',
     },
     keywords: [
         'Sensor Fusion', 'Edge AI for Defense', 'Autonomous Mission Control',
@@ -40,7 +43,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`${inter.variable} ${jetbrainsMono.variable} ${orbitron.variable}`}>{children}</body>
+            <body className={`${inter.variable} ${jetbrainsMono.variable} ${orbitron.variable}`}>
+                {children}
+                <Chatbot />
+            </body>
         </html>
     )
 }
