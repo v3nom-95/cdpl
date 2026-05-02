@@ -398,13 +398,13 @@
         tagline: "FIXED WING TRAINER · FPV SERIES",
         brand: "MAS",
         category: "TRAINER",
-        description: "Hand-launched delta-wing fixed-wing trainer for FPV pilot skill development and mission familiarization.",
-        longDescription: "Horizon 160 FPV is a lightweight delta-wing fixed-wing trainer designed for realistic UAV flight training and FPV mission familiarization. The hand-launch configuration enables rapid deployment without runway dependency, supporting operator skill development in navigation, recovery, and mission execution.",
+        description: "Hand-launched fixed-wing delta trainer for realistic UAV FPV skill development without runway dependency.",
+        longDescription: "The Hand-Launched Fixed-Wing Delta Trainer Aircraft is a lightweight, rugged training platform designed to provide realistic, cost-effective UAV flight training for operators. It enables rapid skill development in launch, recovery, navigation, and mission execution without dependence on runways or complex infrastructure. The system closely replicates operational fixed-wing UAV FPV goggles and FPV camera handling characteristics, ensuring smooth transition to larger tactical platforms.",
         heroSpecs: [
-            { label: "Endurance", value: "45m" },
-            { label: "Range", value: "4km" },
-            { label: "Wingspan", value: "1600mm" },
-            { label: "Speed", value: "16m/s" }
+            { label: "Endurance", value: "35–45m" },
+            { label: "Range", value: "3–4km" },
+            { label: "Wingspan", value: "1,600mm" },
+            { label: "AUW", value: "3,500g" }
         ],
         performanceMetrics: [
             { label: "AGILITY_INDEX", value: 95, unit: "%" },
@@ -415,11 +415,11 @@
         featureCards: [
             {
                 title: "Hand-Launched Efficiency",
-                description: "Rapid deployment delta configuration, eliminating the need for runways or launch gear."
+                description: "Rapid deployment delta configuration eliminating the need for runways or complex launch infrastructure."
             },
             {
-                title: "FPV Mission Skills",
-                description: "2K FPV camera system designed for high-fidelity pilot training and navigation drills."
+                title: "Realistic FPV Training",
+                description: "Replicates operational fixed-wing UAV FPV handling for smooth transition to larger tactical platforms."
             },
             {
                 title: "Safety First",
@@ -429,38 +429,40 @@
         variants: [
             { 
                 id: "160-fpv",
-                variant: "Horizon 160 FPV", 
-                type: "Fixed Wing Trainer", 
-                description: "Hand-launched delta wing for advanced pilot mastery.",
+                variant: "HORIZON FPV – Hand-Launched Delta",
+                type: "Fixed Wing Trainer",
+                description: "A lightweight, rugged hand-launched fixed-wing delta trainer designed for realistic, cost-effective UAV flight training. Enables rapid skill development in launch, recovery, navigation, and mission execution without runway dependency.",
                 keyHighlights: [
-                    "Hand-Launched Delta Configuration",
-                    "Wingspan: 1600 mm",
-                    "Endurance: Up to 35–45 Minutes",
-                    "Operational Range: Up to 3–4 KM",
-                    "Cruise Speed: 14–16 m/s",
-                    "2K FPV Camera System",
-                    "Manual Flight + Return-to-Home (RTH)",
-                    "Geo-Fencing Enabled",
-                    "Low Visual & Acoustic Signature"
+                    "Wingspan: 1,600 mm",
+                    "Endurance: ~35–45 min",
+                    "AUW: 3,500 g",
+                    "Cruise Speed: 14–16 m/s | Top Speed: 20–22 m/s",
+                    "Range: 3–4 km",
+                    "Launch Altitude: ~3500 ft AMSL | Max Flight Altitude: ≥600 ft AGL",
+                    "Resolution: 2K (Static)",
+                    "Radio Transmitter + FPV Goggles",
+                    "Manual Flight Modes",
+                    "RTH & Geo-Fencing",
+                    "Signatures: Visible – Low | Acoustic – Low"
                 ],
-                capabilities: ["Manual/Acro Flight", "Long Range Telemetry", "Delta-Wing Aerodynamics"],
-                applications: ["FPV Pilot Training", "Area Familiarization", "Skill Development"],
-                performance: { endurance: "35-45m", range: "3-4km", payload: "2K FPV" },
+                capabilities: ["Hand Launch – No Runway Required", "FPV Goggles + 2K Camera", "RTH & Geo-Fencing", "Delta-Wing Aerodynamics"],
+                applications: ["FPV Pilot Training", "Launch & Recovery Drills", "Navigation & Mission Execution", "Transition to Tactical Platforms"],
+                performance: { endurance: "35–45m", range: "3–4km", cruiseSpeed: "14–16 m/s", topSpeed: "20–22 m/s", auw: "3,500 g" },
                 gallery: ["/partners/horizonfpv.jpeg"]
             }
         ],
         specs: [
-            { label: "Wingspan", value: "1600mm" },
-            { label: "Cruise Speed", value: "14-16 m/s" },
-            { label: "Launch", value: "Hand Launch" },
-            { label: "Safety", value: "Geo-Fencing/RTH" }
+            { label: "Wingspan", value: "1,600mm" },
+            { label: "Cruise Speed", value: "14–16 m/s" },
+            { label: "Top Speed", value: "20–22 m/s" },
+            { label: "AUW", value: "3,500 g" }
         ],
         features: [
-            "2K Low-Latency FPV",
-            "Automatic RTH on Lost Link",
-            "Eco-friendly Materials",
-            "Field Repairable Delta Wing",
-            "Low Operational Signature"
+            "Hand-Launched – No Runway Required",
+            "2K FPV Camera + FPV Goggles",
+            "RTH & Geo-Fencing",
+            "Replicates Tactical Fixed-Wing Handling",
+            "Low Visual & Acoustic Signature"
         ],
         imageClass: "product-image-sim",
         nickname: "MASTER",
