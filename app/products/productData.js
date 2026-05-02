@@ -297,10 +297,10 @@
         description: "VTOL fixed-wing platform combining vertical takeoff with efficient cruise for extended reconnaissance.",
         longDescription: "HORIZON 120 VTOL combines vertical takeoff capability with efficient fixed-wing cruise performance. Designed for training and ISR applications, the platform supports autonomous waypoint navigation and stabilized observation. It is the premier choice for long-endurance missions without the need for runways.",
         heroSpecs: [
-            { label: "Endurance", value: "40m" },
-            { label: "Range", value: "4km" },
+            { label: "Endurance", value: "30–40m" },
+            { label: "Range", value: "3–4km" },
             { label: "Wingspan", value: "1200mm" },
-            { label: "AUW", value: "3.5kg" }
+            { label: "AUW", value: "4,000g" }
         ],
         performanceMetrics: [
             { label: "CRUISE_STABILITY", value: 92, unit: "%" },
@@ -325,48 +325,59 @@
         variants: [
             { 
                 id: "day",
-                variant: "Day Variant", 
+                variant: "Day – 3-Axis Nose Mount Gimbal", 
                 type: "VTOL Fixed Wing ISR", 
-                description: "Designed for stabilized day observation and training with autonomous waypoint navigation.",
+                description: "Modular, quick-assembly VTOL Fixed Wing Aircraft designed for training missions. Equipped with a flight controller capable of autonomous waypoint navigation and stabilised manual flight, and a 3-Axis Stabilised EO Gimbal for day operations. The handheld GCS allows effortless mission planning with live video streaming.",
                 keyHighlights: [
-                    "VTOL Fixed-Wing Configuration",
-                    "Endurance: Up to 30–40 Minutes",
-                    "Operational Range: Up to 3–4 KM",
-                    "3-Axis Stabilized Day EO Gimbal",
-                    "Wingspan: 1200 mm",
-                    "Lightweight Composite Airframe",
-                    "Portable Ground Control Station (7-inch Display)"
+                    "Wingspan: 1,200 mm",
+                    "Endurance: ~30–40 Minutes",
+                    "Range: 3–4 km",
+                    "Cruise Speed: 14–16 m/s | Top Speed: 20–22 m/s",
+                    "AUW: 4,000 g",
+                    "Launch Altitude: ~3500 ft AMSL | Max Flight Altitude: ≥600 ft AGL",
+                    "Payload: 3-Axis Stabilised EO Gimbal (Day)",
+                    "Resolution: 2560 x 1440 | 6x Digital Zoom",
+                    "Manual & Autonomous Flight Modes, Waypoint Navigation, Guided Mode",
+                    "Auto Take-off / Auto Landing / RTH",
+                    "GCS: 7-inch Android, integrated RC, Video & Telemetry",
+                    "Signatures: Visible – Low | Acoustic – Low"
                 ],
-                capabilities: ["Vertical Takeoff", "Fixed-Wing Cruise", "Autonomous Navigation"],
+                capabilities: ["VTOL + Fixed-Wing Cruise", "3-Axis EO Gimbal", "Autonomous Navigation", "Live Video Streaming"],
                 applications: ["Daytime ISR", "UAV Pilot Training", "Perimeter Surveillance"],
-                performance: { endurance: "30-40m", range: "3-4km", payload: "Day EO" },
+                performance: { endurance: "30–40m", range: "3–4km", cruiseSpeed: "14–16 m/s", topSpeed: "20–22 m/s", auw: "4,000 g" },
                 gallery: ["/partners/horizonvtol.png"]
             },
             { 
                 id: "day-night",
-                variant: "Day/Night EO/IR Variant", 
+                variant: "Day/Night – 3-Axis Nose Mount Gimbal", 
                 type: "VTOL Fixed Wing ISR", 
-                description: "Modular VTOL UAV designed for extended aerial observation in both day and night conditions.",
+                description: "Modular, quick-assembly VTOL Fixed Wing Aircraft designed for training missions. Equipped with a flight controller capable of autonomous waypoint navigation and stabilised manual flight, and a 3-Axis Stabilised EO/IR Gimbal for day and night operations. The handheld GCS allows effortless mission planning with live video streaming.",
                 keyHighlights: [
-                    "VTOL Fixed-Wing Platform",
-                    "Endurance: Up to 30–40 Minutes",
-                    "Operational Range: Up to 3–4 KM",
-                    "3-Axis Stabilized EO/IR Gimbal",
-                    "1200 mm Wingspan",
-                    "Low Visual & Acoustic Signature",
-                    "Integrated Handheld Ground Control Station"
+                    "Wingspan: 1,200 mm",
+                    "Endurance: ~30–40 Minutes",
+                    "Range: 3–4 km",
+                    "Cruise Speed: 14–16 m/s | Top Speed: 20–22 m/s",
+                    "AUW: 4,000 g",
+                    "Launch Altitude: ~3500 ft AMSL | Max Flight Altitude: ≥600 ft AGL",
+                    "Payload: 3-Axis Stabilised EO/IR Gimbal (Day & Night)",
+                    "EO Resolution: 2560 x 1440 | 4x Digital Zoom",
+                    "Thermal Resolution: 384 x 288",
+                    "Manual & Autonomous Flight Modes, Waypoint Navigation, Guided Mode",
+                    "Auto Take-off / Auto Landing / RTH",
+                    "GCS: 7-inch Android, integrated RC, Video & Telemetry",
+                    "Signatures: Visible – Low | Acoustic – Low"
                 ],
-                capabilities: ["Thermal Imaging", "Night Operations", "Signature Mitigation"],
-                applications: ["Night Reconnaissance", "Tactical ISR", "BVLOS Operations"],
-                performance: { endurance: "30-40m", range: "3-4km", payload: "EO/IR" },
+                capabilities: ["VTOL + Fixed-Wing Cruise", "3-Axis EO/IR Gimbal", "Thermal Imaging", "Autonomous Navigation"],
+                applications: ["Day & Night ISR", "UAV Pilot Training", "Perimeter Surveillance", "BVLOS Operations"],
+                performance: { endurance: "30–40m", range: "3–4km", cruiseSpeed: "14–16 m/s", topSpeed: "20–22 m/s", auw: "4,000 g" },
                 gallery: ["/partners/horizonvtol.png"]
             }
         ],
         specs: [
             { label: "Wingspan", value: "1200mm" },
-            { label: "Flight Mode", value: "VTOL to Cruise" },
-            { label: "Airframe", value: "Composite Material" },
-            { label: "Max Speed", value: "75 KMPH" }
+            { label: "Cruise Speed", value: "14–16 m/s" },
+            { label: "Top Speed", value: "20–22 m/s" },
+            { label: "Max Speed", value: "20–22 m/s" }
         ],
         features: [
             "Autonomous Waypoint Navigation",
