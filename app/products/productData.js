@@ -4,12 +4,12 @@
         tagline: "UAV SIMULATOR · TRAINER SERIES",
         brand: "MAS",
         category: "SIMULATOR",
-        description: "Plug-and-play UAV simulation system for structured multi-platform drone training.",
-        longDescription: "RAVEN is a plug-and-play UAV simulation system designed for structured multi-platform drone training. The system supports FPV, rotary, and fixed-wing mission environments with realistic terrain rendering and physics-based simulation, enabling risk-free mastery of complex aerial maneuvers.",
+        description: "Turnkey plug-and-play simulation system for multi-platform UAV training across FPV, fixed-wing, helicopter, and kamikaze attack profiles.",
+        longDescription: "RAVEN is a turnkey, plug-and-play simulation system pre-loaded with licensed software for multi-platform training across FPV, Micro, Nano, Small, Medium, Fixed Wing, Helicopter, and Battlefield Kamikaze Attack training — across diverse terrain environments. The system delivers high-fidelity physics rendering, realistic terrain environments, and a complete operator kit for risk-free mastery of complex aerial maneuvers.",
         heroSpecs: [
-            { label: "Display", value: "27\" Curved" },
-            { label: "Computing", value: "14th Gen i5" },
-            { label: "Graphics", value: "RTX 3050" },
+            { label: "Display", value: "27-inch Curved" },
+            { label: "Computing", value: "i5 14th Gen" },
+            { label: "Graphics", value: "RTX 3050 8GB" },
             { label: "System", value: "Plug-and-Play" }
         ],
         performanceMetrics: [
@@ -21,50 +21,54 @@
         featureCards: [
             {
                 title: "Immersive Visuals",
-                description: "27-inch Curved High-Refresh Display for tactical environmental awareness and depth perception."
+                description: "27-inch Curved High-Refresh Display with NVIDIA RTX 3050 for realistic physics rendering across diverse terrain environments."
             },
             {
                 title: "High-Core Performance",
-                description: "Powered by 14th Gen Intel i5 and NVIDIA RTX 3050 for lag-free, high-fidelity physics."
+                description: "Intel i5 14th Gen, 16GB RAM, 1TB SSD, and 7-fan advanced cooling for lag-free, high-fidelity simulation."
             },
             {
                 title: "Complete Training Kit",
-                description: "Integrated FPV goggles, radio transmitter, and built-in UPS backup for uninterrupted sessions."
+                description: "Includes FPV Goggles, Radio Transmitter, UPS Backup, Mouse, Keyboard, Mouse Pad, and Headset — ready out of the box."
             }
         ],
         variants: [
             { 
                 id: "raven-trainer",
-                variant: "RAVEN Simulator System", 
-                type: "Professional UAV Trainer", 
-                description: "The complete simulation solution for modern UAV operators.",
+                variant: "RAVEN Simulator System",
+                type: "Professional UAV Trainer",
+                description: "A turnkey, plug-and-play simulation system pre-loaded with licensed software for multi-platform UAV training across FPV, Micro, Nano, Small, Medium, Fixed Wing, Helicopter, and Battlefield Kamikaze Attack profiles across diverse terrain environments.",
                 keyHighlights: [
-                    "27-inch Curved High-Refresh Display",
-                    "Intel i5 (14th Gen) Performance Core",
-                    "NVIDIA RTX 3050 (8GB Graphics)",
-                    "16GB RAM | 1TB SSD",
-                    "Integrated FPV Goggles & Radio Transmitter",
-                    "Built-in UPS Backup",
-                    "Pre-Loaded Licensed Simulation Software"
+                    "Visual System: 27-inch Curved Display (High Refresh Rate)",
+                    "CPU: Intel i5 14th Generation",
+                    "RAM: 16GB | Storage: 1TB SSD",
+                    "Graphics: NVIDIA GeForce RTX 3050 (8GB)",
+                    "Cooling: Advanced 7-Fan System",
+                    "Control: Radio Transmitter",
+                    "FPV System: FPV Goggles",
+                    "Power Backup: UPS",
+                    "Peripherals: Mouse, Keyboard, Mouse Pad, Headset",
+                    "Pre-Loaded Licensed Simulation Software",
+                    "Multi-Platform: FPV, Micro, Nano, Small, Medium, Fixed Wing, Helicopter, Kamikaze"
                 ],
-                capabilities: ["Multi-Platform Sim", "FPV Mastery", "Mission Planning"],
-                applications: ["New Pilot Training", "Mission Profile Testing", "Advanced Acro Drills"],
-                performance: { },
+                capabilities: ["Multi-Platform Simulation", "FPV Goggles Training", "Battlefield Kamikaze Attack Training", "Diverse Terrain Environments"],
+                applications: ["New Pilot Training", "Mission Profile Testing", "Advanced Acro Drills", "Kamikaze Attack Rehearsal"],
+                performance: {},
                 gallery: ["/partners/r1.png", "/partners/r2.jpeg", "/partners/r3.jpeg"]
             }
         ],
         specs: [
-            { label: "Display", value: "27\" Curved Refresh" },
-            { label: "Controller", value: "Integrated Radio" },
-            { label: "Backup", value: "Built-in UPS" },
-            { label: "Software", value: "Multi-UAV Licensed" }
+            { label: "Display", value: "27-inch Curved" },
+            { label: "Graphics", value: "RTX 3050 8GB" },
+            { label: "Computing", value: "i5 14th Gen / 16GB / 1TB" },
+            { label: "Backup", value: "Built-in UPS" }
         ],
         features: [
-            "Realistic Physics Engine",
-            "Support for FPV/Fixed/Rotary",
-            "High-Fidelity Terrain Rendering",
-            "Plug-and-Play Setup",
-            "Comprehensive Mission Log"
+            "Pre-Loaded Licensed Simulation Software",
+            "Multi-Platform: FPV / Fixed Wing / Helicopter / Kamikaze",
+            "High-Fidelity Physics & Terrain Rendering",
+            "Complete Operator Kit Included",
+            "Plug-and-Play Setup"
         ],
         imageClass: "product-image-sim",
         nickname: "MAESTRO",
@@ -429,7 +433,7 @@
         variants: [
             { 
                 id: "160-fpv",
-                variant: "HORIZON FPV – Hand-Launched Delta",
+                variant: "HORIZON FPV",
                 type: "Fixed Wing Trainer",
                 description: "A lightweight, rugged hand-launched fixed-wing delta trainer designed for realistic, cost-effective UAV flight training. Enables rapid skill development in launch, recovery, navigation, and mission execution without runway dependency.",
                 keyHighlights: [
