@@ -625,13 +625,13 @@
         tagline: "MULTI-ROTOR · PROP GUARD SERIES",
         brand: "MAS",
         category: "TRAINER",
-        description: "Compact quadcopter with integrated propeller guards for safe indoor and confined-area pilot training.",
-        longDescription: "AOT (Air Observer Trainer) is a compact 7-inch quadcopter designed for structured FPV pilot training and close-proximity maneuver drills. The integrated propeller guard system enhances safety during indoor and confined-area operations, making it ideal for foundational and intermediate-level operator development.",
+        description: "Compact 7-inch quadcopter training platform with integrated propeller guards for safe FPV pilot training and tactical maneuver drills.",
+        longDescription: "Air Observer Trainer (AOT) is a compact 7-inch quadcopter training platform designed for structured FPV pilot training, tactical maneuver drills, and observer familiarization missions. The system features an integrated propeller guard architecture to enhance operational safety and prevent bodily injury during close-proximity training exercises. Built as a rugged and durable platform, AOT is optimized for repetitive training cycles, rapid deployment, and controlled skill development in both indoor and outdoor environments.",
         heroSpecs: [
-            { label: "Endurance", value: "30m" },
-            { label: "Range", value: "2km" },
-            { label: "Frame", value: "7\" Rugged" },
-            { label: "Safety", value: "Prop Guards" }
+            { label: "Endurance", value: "~30m" },
+            { label: "Range", value: "1–2km" },
+            { label: "AUW", value: "2,000g" },
+            { label: "Frame", value: "7-inch Rugged" }
         ],
         performanceMetrics: [
             { label: "SAFETY_RATING", value: 99, unit: "%" },
@@ -642,51 +642,55 @@
         featureCards: [
             {
                 title: "Safety-First Architecture",
-                description: "Rugged wrap-around propeller guards designed to protect both the platform and the environment."
+                description: "Integrated propeller guard architecture enhances operational safety and prevents bodily injury during close-proximity training."
             },
             {
-                title: "Confined Space Mastery",
-                description: "Small footprint and high stability for mastering flight in GPS-denied and indoor environments."
+                title: "All-Environment Training",
+                description: "Optimized for repetitive training cycles and rapid deployment in both indoor and outdoor environments."
             },
             {
-                title: "Progressive Learning",
-                description: "Multiple flight modes from full stabilization to manual acro for comprehensive skill building."
+                title: "Progressive Skill Building",
+                description: "Stabilized, Acro, and Manual flight modes for foundational through intermediate-level operator development."
             }
         ],
         variants: [
             { 
                 id: "aot-7",
-                variant: "A.O.T. 7-inch Variant", 
-                type: "Prop-Guarded Trainer", 
-                description: "7-inch quadcopter designed for close-proximity maneuver training.",
+                variant: "A.O.T. 7-inch",
+                type: "Prop-Guarded FPV Trainer",
+                description: "A compact 7-inch quadcopter training platform designed for structured FPV pilot training, tactical maneuver drills, and observer familiarization missions. Features integrated propeller guard architecture for enhanced safety during close-proximity training exercises.",
                 keyHighlights: [
-                    "7-inch Rugged Frame with Prop Guard",
-                    "Endurance: Up to 30 Minutes",
-                    "Operational Range: Up to 1–2 KM",
-                    "Cruise Speed: 10–12 m/s",
-                    "2K FPV Camera",
-                    "Stabilized / Acro / Manual Modes",
-                    "Return-to-Home & Geo-Fencing",
-                    "Low Visual & Acoustic Signature"
+                    "Frame Size: 7 Inch",
+                    "Endurance: ~30 min",
+                    "AUW: 2,000 g",
+                    "Cruise Speed: 10–12 m/s | Top Speed: 14–16 m/s",
+                    "Range: 1–2 km",
+                    "Launch Altitude: ~3000 ft AMSL | Max Flight Altitude: ≥500 ft AGL",
+                    "Resolution: 2K (Static)",
+                    "Radio Transmitter + FPV Goggles",
+                    "Flight Modes: Stabilized / Acro / Manual",
+                    "RTH & Geo-Fencing",
+                    "Integrated Propeller Guard",
+                    "Signatures: Visible – Low | Acoustic – Low"
                 ],
-                capabilities: ["Indoor Stability", "Crash Resilience", "Obstacle Proximity"],
-                applications: ["Foundational Training", "CQB Maneuvering", "Safety Familiarization"],
-                performance: { endurance: "30m", range: "1-2km", payload: "2K FPV" },
+                capabilities: ["Integrated Prop Guard", "FPV Real-Time Transmission", "Stabilized / Acro / Manual Modes", "RTH & Geo-Fencing"],
+                applications: ["Foundational FPV Training", "Tactical Maneuver Drills", "Observer Familiarization", "Indoor & Outdoor Operations"],
+                performance: { endurance: "~30m", range: "1–2km", cruiseSpeed: "10–12 m/s", topSpeed: "14–16 m/s", auw: "2,000 g" },
                 gallery: ["/partners/aot.png"]
             }
         ],
         specs: [
-            { label: "Frame", value: "7 Inch Rugged Carbon" },
-            { label: "Safety", value: "360 Prop Guard" },
-            { label: "Propulsion", value: "Brushless Electric" },
-            { label: "Video", value: "Zero-Latency 2K" }
+            { label: "Frame", value: "7-inch Rugged Carbon" },
+            { label: "AUW", value: "2,000 g" },
+            { label: "Top Speed", value: "14–16 m/s" },
+            { label: "Safety", value: "360 Prop Guard" }
         ],
         features: [
-            "Rugged Propeller Guards",
-            "Multiple Flight Skill Modes",
-            "High-Intensity Visibility LED",
-            "Compact Modular Build",
-            "Safe Indoor Deployment"
+            "Integrated Propeller Guard Architecture",
+            "Stabilized / Acro / Manual Flight Modes",
+            "Real-Time FPV Transmission",
+            "RTH & Geo-Fencing",
+            "Rugged Frame for Repetitive Training Cycles"
         ],
         imageClass: "product-image-aot",
         nickname: "CADET",
